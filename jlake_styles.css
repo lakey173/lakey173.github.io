@@ -1,0 +1,690 @@
+@charset "utf-8";
+/* Simple fluid media
+   Note: Fluid media requires that you remove the media's height and width attributes from the HTML
+   http://www.alistapart.com/articles/fluid-images/ 
+*/
+img, object, embed, video {
+	max-width: 100%;
+}
+
+/* IE 6 does not support max-width so default to width 100% */
+.ie6 img {
+	width:100%;
+}
+
+/*zoom in=resize browser to be smaller; zoom out=make browser window bigger*/
+
+/*CSS resets from http://meyerweb.com/eric/tools/css/reset/*/
+html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+}
+
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/*Beginning of styles by NL*/
+/****************************Fluid layout pieces - mobile settings*******************************/
+.wideLeft {
+	width: 100%; 
+	}
+
+.thinRight {
+	width: 100%; 
+	padding-bottom: 20px;
+	}
+
+#navContainer {
+	width: 80%;
+	}
+	
+#logoContainer {
+	width: 100%;
+}
+
+#navLinks {
+width: 100%;	
+}
+
+
+
+/*Option 1 - works from 680px to 840px
+.ssTextBox {
+	top: 5%;
+	right: 5%;
+	width: 55%;
+	position: absolute;
+	z-index:2;
+	}
+
+
+
+*/
+
+
+/*Option 2*/
+.ssTextBox {
+	width: 100%;
+	position: relative;
+	z-index:2;
+	}
+	
+.ssTitleBox {
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-top: 2%;
+	padding-bottom: 2%;
+}
+
+.ssBlurbBox {
+	width: 80%;
+	padding-left: 10;
+	padding-right: 10%;
+	padding-top: 1%;
+	padding-bottom: 10px;
+	}
+
+#pager {
+right: 45%;
+top: 5%; 
+}
+
+
+#contentContainer {
+	width: 80%;
+}
+
+
+#aboutColumn {
+	width: 100%;
+}
+
+#contactColumn {
+	width: 100%;
+	}
+	
+#exploreColumn {
+	width: 100%;
+	}
+
+#footer {
+	width: 80%;
+	padding-left: 10%;
+	padding-right: 10%;
+}
+
+
+
+
+/******************************************************************************************************/
+body {
+	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;
+	font-size: 14px;
+	line-height: 1.3;
+	/*added for zooming out in browser window. keeps things centered and 
+	prevents the floating layout from going wonky*/
+	max-width: 1700px;
+	margin-left: auto;
+	margin-right: auto;
+	}
+
+
+/***************************Navigation styles**********************************/
+
+/*Mobile Navigation*/
+
+#navContainer {
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin-bottom: 0;
+	}	
+
+/*Logo*/
+#logoContainer {
+	float: left;
+	margin: 0;
+	}
+
+#logoName {
+	width: 100%;
+	float: left;
+	padding: 0;
+	margin: 0;
+	text-align: right;
+	font-size: 40px;
+	font-weight: bold;
+	line-height: 1;
+	border-bottom: 2px solid #ffd464;
+	}
+
+#logoTitle {
+	width: auto;
+	padding-top: 2px;
+	float: right;
+	font-size: 15px;
+	text-align: right;
+	line-height: 1;
+	}
+
+/*Links for Navigation*/
+#navLinks {
+	float: left;
+	padding-top: 18px;
+	}
+
+#navLinks ul {
+	text-align: right;
+	margin: 0;
+	padding: 0;
+	list-style-type:none;
+	}
+
+#navLinks ul li {
+	display: inline-block;
+	padding-left: 3%;
+	font-size: 15px;
+	font-weight: 700;
+	margin-bottom: 5px;
+	}
+
+	
+#navLinks ul li a {
+	color: #000;
+	text-decoration: none;
+	}
+	
+#navLinks ul li a:hover {
+	color: #000;
+	border-bottom: 2px solid #ffd464;
+	}
+/*******************************End Navigation Styles*********************************************/
+
+/****************** Slideshow styles ********************/
+/* divs - this set of code needed to make the transitions scroll
+as expected*/
+.cycle-slideshow > div { 
+    position: absolute; top: 0; left: 0;
+    width: 100%; padding: 0;
+}
+
+#slideshowContainer {
+	width: 100%;
+	position: relative;
+	}
+	
+
+#pager {
+	position: absolute;  
+	z-index: 500;
+	cursor: pointer;
+	}
+	
+#pager .pagerImage {
+	width: 15px;
+	height: 15px;
+	overflow: hidden;
+	float: left;
+	padding-left: 5px;
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+	}
+	
+#pager .cycle-pager-active { background-position: 0px -15px; }
+
+#pager .pagerImage:hover {
+	background-position: 0px -15px; 
+	}
+
+/*Shadows around the slideshow for white background images*/
+#topShadow {
+	clear: both;
+	height: 3px;
+	background-position: top left;
+	background-image: url(../images/topShadow.gif);
+	background-repeat: repeat-x;
+	margin:0;
+	padding: 0;
+	}
+
+#bottomShadow {
+	height: 3px;
+	background-position: top left;
+	background-image: url(../images/bottomShadow.gif);
+	background-repeat: repeat-x;
+	margin:0;
+	padding: 0;
+	}	
+
+.pics {
+	position:absolute;
+	height: auto;
+	z-index:1;
+	top:0;
+	left: 0;
+	/*background-image:url(../images/capitalSlide.png)
+	background-position: top left;
+	background-repeat: no-repeat;
+	*/
+	}
+
+.pics img {
+	position: static;
+	display: block;
+	}
+
+.ssTitleBox {
+	float: right;
+	height: auto;
+	font-size: 16px;
+	font-weight: bold;
+	color: #fff;
+	text-align: right;
+	}
+
+a .ssTitleBox {
+	color: #fff;
+	text-decoration: none;
+	}
+
+a:hover .ssTitleBox {
+	color: #fff;
+	text-decoration: underline;
+	}
+
+
+.ssBlurbBox {
+	float: right;
+	font-size: 14px;
+	color: #000;
+	text-align: right;
+	margin-top: 1%;
+	/*background-color: #fff;*/
+	background-position: top left;
+	background-image: url(../images/whiteBackground90.png);
+	background-repeat: repeat;
+	}
+
+a {
+	color: #2a5db0;
+	text-decoration: none
+	}
+
+a:visited {
+	color: #2a5db0;
+	text-decoration: none
+	}
+
+.abstractSpan {
+	color: #2a5db0;
+	text-decoration: none;
+	font-style: italic;
+	}
+
+.abstractSpan:hover {
+	text-decoration: underline;
+	cursor: pointer;
+	}
+
+
+a:hover {
+	color: #2a5db0;
+	text-decoration: underline;
+	}
+
+a .ssBlurbBox .readMore {
+	color: #2a5db0;
+	text-decoration: none;
+	}
+
+a:hover .ssBlurbBox .readMore {
+	color: #2a5db0;
+	text-decoration: underline;
+	}
+
+/************************ Content bottom page styles ******************************/
+#contentContainer {
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 15px;
+	padding-bottom: 25px;
+	}
+	
+.abstract {
+	margin-bottom: 15px;
+	margin-left: 25px;
+	}
+
+.hide {
+	display: none;
+	}
+	
+ .unhide {
+	 display: block;
+	 }
+
+#aboutColumn {
+	float: left;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	}
+	
+#contactColumn {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	float:left;
+	}
+
+#exploreColumn {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	float: left;
+	display: block;
+	}
+#aboutColumn img {
+	float: left;
+	margin-right: 4%;
+	margin-bottom: 10px;
+	}
+
+.bold {
+	font-weight: bold;
+	}
+
+h2.marginBottom {
+	margin-bottom: 10px;
+	}
+
+h2.marginBottomSmall {
+	margin-bottom: 5px;
+	}
+
+h2.marginTop {
+	margin-top: 20px;
+	}
+
+h2.bigText {
+	font-size: 15px;
+	}
+
+p.marginBottom {
+	margin-bottom: 10px;
+	}
+	
+p.marginBottomSmall {
+	margin-bottom: 5px;
+	}
+
+p.indent {
+	margin-left: 20px;
+	}
+
+.cv p {
+	margin-bottom: 8px;
+	margin-left: 25px;
+	}
+
+.cv .text-small {
+	font-size: 12px;
+	}
+
+#headerContainer {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 15px;
+	}
+
+.lineSpace {
+	height: 14px;
+	}
+
+.bottomLine {
+	width: 100%;
+	border-bottom: 1px solid #ffd464;
+	}
+
+h1.bottomLine {
+	font-size: 15px;
+	font-weight: bold;
+	color: #000;
+	margin-bottom: 10px;
+	padding-bottom: 5px;
+	}
+
+h1 {
+	font-size: 20px;
+	font-weight: bold;
+	color: #000;
+	margin-bottom: 15px;
+	}
+
+h1 .underline {
+	border-bottom: 1px solid #ffd464;
+	}
+
+.oneLine {
+	margin-top: 3px;
+	margin-bottom: 10px;
+	margin-left: 25px;
+	}
+
+.bioImage {
+	float: right;
+	margin-left: 15px;
+	margin-bottom: 15px;
+	}
+
+#home {
+	color: #000;
+	}
+
+h2 {
+	font-size: 14px;
+	font-weight: bold;
+	color: #000;	
+}
+
+.italicDate {
+	font-style: italic;
+	font-size: 13px;
+	}
+
+#exploreColumn h2 a {
+	color: #000;
+	text-decoration: none;
+	}
+
+#exploreColumn h2 a:hover {
+	color: #000;
+	border-bottom: 1px solid #ffd464;
+	}
+	
+#footer {
+	padding-top: 15px;
+	background-color: #eee;
+	font-size: 10px;
+	float: left;
+	padding-bottom: 15px;
+	}
+
+
+#logoContainer {
+	padding-bottom: 0px;
+	}
+
+#navLinks ul {
+	margin-bottom: 20px;
+	}
+
+/* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
+
+@media only screen and (min-width: 481px) {
+/*With the tablet layout, about Column gets 100%; contact and explore columns next to each other*/
+.wideLeft {
+	width: 80%; 
+	float: right;
+	}
+
+.thinRight {
+	width: 10%; 
+	padding-left: 10%; 
+	float: right; 
+	padding-top: 15px;
+	padding-bottom: 0px;
+	}
+
+#aboutColumn {
+	width: 100%;
+	float: left;
+	}
+	
+#contactColumn {
+	margin-top: 20px;
+	width: 48%;
+	padding-right: 4%;
+	float:left;
+	}
+
+#exploreColumn {
+	margin-top: 20px;
+	width: 48%;
+	float: left;
+	display: block;
+	}
+}
+
+@media only screen and (min-width: 610px) {
+	
+	}
+
+/* Desktop Layout: 769px to a max of 1232px.  Inherits styles from: Mobile Layout and Tablet Layout. */
+@media only screen and (min-width: 769px) {
+
+/*Bottom columns for desktop -- all next to each other*/
+#aboutColumn {
+	width: 46%;
+	padding-right:4%;
+	float: left;
+	}
+	
+#contactColumn {
+	width: 23%;
+	padding-right: 4%;
+	float:left;
+	}
+
+#exploreColumn {
+	width: 23%;
+	float: left;
+	}
+
+}
+
+
+
+@media (min-width: 930px) {
+/*For the navigation and the slideshow, this works from 840px to 1024px). 
+Logo on the left and navigation links on the right*/
+#logoContainer {
+	width: 35%;
+}
+#navLinks {
+width: 65%;	
+}
+
+.ssTextBox {
+	position: absolute;
+	z-index:2;
+	}
+
+.ssTextBox {
+	top: 25%;
+	right: 10%;
+	width: 65%;
+}
+
+.ssTitleBox {
+	padding: 2%;
+	}
+
+.ssBlurbBox {
+	width: 85%;
+	padding: 2%
+}
+
+#pager {
+	right: 10%; 
+	top: 90%; 
+}
+	
+	#logoContainer {
+		padding-bottom: 20px;
+	}
+	}
+
+
+@media only screen and (min-width: 1024px) {
+	
+/*Logo links and slideshow overlay. This works well from 1024px to 1700px. Goes higher in the screen after that to 
+prevent the text from overlaying the pager buttons. This also controls the 
+width give to the logo 0and the navigation links. Increase the width for the links and decrease the width for the
+logo to accomodate smaller screen sizes.*/
+#logoContainer {
+width: 40%;
+}
+
+#navLinks {
+width: 60%;	
+}
+
+.ssTextBox {
+	top: 40%;
+	right: 10%;
+	width: 45%;
+	}
+	
+	}
+
+
+@media only screen and (min-width: 1340px) {
+
+/*This keeps the padding correct when the title is only one line.
+1220*/	
+
+#navLinks ul li {
+	padding-left: 4%;
+	}	
+	
+#logoTitle .float {
+	float: left;
+	}
+	
+
+}

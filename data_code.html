@@ -1,0 +1,122 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="ie6 oldie"> <![endif]-->
+<!--[if IE 7]>    <html class="ie7 oldie"> <![endif]-->
+<!--[if IE 8]>    <html class="ie8 oldie"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>James Lake | Associate Professor of Economics | University of Tennessee</title>
+<link href="css/boilerplate.css" rel="stylesheet" type="text/css">
+<link href="css/jlake_styles.css" rel="stylesheet" type="text/css">
+<script src="scripts/jquery-1.11.1.min.js"></script>
+<script src="scripts/jquery.cycle2.js"></script>
+
+<script>
+$(document).ready(function(){
+	
+$( ".abstractSpan" ).click(function() {
+	$(this).parent().next(".abstract").toggleClass("hide");
+});
+	
+});
+</script>
+
+<!-- 
+To learn more about the conditional comments around the html tags at the top of the file:
+paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+
+Do the following if you're using your customized build of modernizr (http://www.modernizr.com/):
+* insert the link to your js here
+* remove the link below to the html5shiv
+* add the "no-js" class to the html tags at the top
+* you can also remove the link to respond.min.js if you included the MQ Polyfill in your modernizr build 
+-->
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!--[if lt IE 10]>
+<link href="css/jlake_styles_IE.css" rel="stylesheet" type="text/css">
+<![endif]-->
+<script src="scripts/respond.min.js"></script>
+</head>
+<body>
+<div id="ieContainer">
+
+<div id="navContainer">
+<a id="home" href="index.html">
+  <div id="logoContainer">
+  	<!--img src="../logo.svg"-->
+    <!-- Text for when I tried to do this using the html/css -->
+    <div id="logoName">
+    JAMES LAKE
+    </div>
+    <div id="logoTitle">
+    <div class="float">Associate Professor of Economics,</div><div class="float">&nbsp;University of Tennessee</div>
+    </div>
+  </div><!-- ::logoContainer -->    
+  </a>
+ 
+  <div id="navLinks">
+    <ul>
+    <li><a href="research.html">RESEARCH</a></li>
+    <li><a href="data_code.html">DATA &amp; CODE</a></li>
+    <li><a href="teaching.html">TEACHING</a></li>
+    <li><a href="bio.html">BIO</a></li>
+    <li><a href="cv.html">CV</a></li>
+    <li><a href="contact.html">CONTACT</a></li>
+    </ul>
+  </div><!-- end::navLinks -->
+</div><!-- end::navContainer -->
+
+<div id="topShadow"></div>
+
+<div id="headerContainer">
+<h1>Data &amp; Code</h1>
+</div>
+
+<div id="contentContainer">
+
+<h2 class="marginBottomSmall bigText">2020 US Presidential election, trade war, and health insurance coverage expansion</h2>
+<p class="marginBottomSmall">Replication files from <a href="pdfs/tradeWar_2020election.pdf" target="_blank">The 2020 US Presidential election and Trump's wars on trade and health insurance</a> (with Jun Nie),<span class="italicDate"> European Journal of Political Economy</span> (forthcoming).</p>
+<p class="indent"><a href="data_code/replicationEJPE.zip">Replication files</a></p>
+<br>
+
+<h2 class="marginBottomSmall bigText">NAFTA tariff phase out</h2>
+<p class="marginBottomSmall">Replication files and self-contained US NAFTA phase-out schedule data from <a href="pdfs/phaseOutsNAFTA.pdf" target="_blank">Phase Out Tariffs, Phase In Trade?</a> (with <a href="http://besedes.econ.gatech.edu/Tibor Besedes" target="_blank">Tibor Besedes</a> and <a href="http://tristankohl.weebly.com/Tristan Kohl" target="_blank"> Tristan Kohl</a>),<span class="italicDate"> Journal of International Economics</span>, 2020, November, 103385.</p>
+<p class="indent"><a href="https://data.mendeley.com/datasets/hbyb5fbrgc/1">Replication files</a></p>
+<p class="indent"><a href="data_code/phaseOutScheduleData.zip">US NAFTA phase-out schedule</a></p>
+<br>
+
+<h2 class="marginBottomSmall bigText">Representative-issue specific measures of contributions and lobbying expenditures</h2>
+<p class="marginBottomSmall">These data decompose representative-specific PAC contributions (from the U.S. House of Representatives) across issues and also decompose issue-specific PAC lobbying expenditures across representatives. This is done for i) all PACs, ii) only business PACs and iii) only labor PACs. For a detailed explanation of how these data were created, see Section 3 and the supplementary material of <a href="http://www.sciencedirect.com/science/article/pii/S0176268014001050" target="_blank">Revisiting the link between PAC contributions and lobbying expenditures</a>, <span class="italicDate"> European Journal of Political Economy</span></a>, 2015, 37, 86–101.</p>
+<p class="indent"><a href="data_code/PACdata.zip">Download STATA datasets</a></p>
+<br>
+ 
+<h2 class="marginBottomSmall bigText">Concordances</h2>
+<p class="marginBottomSmall">IPUMS Census microdata uses the industry classification variable ind1990. The following files contain a concordance between ind1990 and 4-digit SIC87 codes in PDF, excel and STATA formats. See <a href="pdfs/goodJobsBadJobs.pdf" target="_blank">Good jobs, bad jobs: what's trade got to do with it?</a>, with <a href="http://faculty.smu.edu/millimet/" target="_blank">Dann Millimet</a></p>
+<p class="indent"><a href="data_code/SIC_IPUMS_industry_concordance.zip">Download condordance files</a></p>
+<br>
+
+<h2 class="marginBottomSmall bigText">Introduction to LaTeX</h2>
+<p class="marginBottomSmall">This is a brief introduction to LaTeX with an emphasis on WYSIWYG LaTeX editors like LyX. I have developed this as an introduction for people who have never used LaTeX before. 
+The video recording is the presentation I gave for <class="indent"><a href="https://www.pamelameyerhofer.com/">Pamela Meyerhofer's</a> #econ_prosem virtual professional seminar series for economics graduate students and early career researchers. 
+<p class="indent"><a href="data_code/latexOverview.pdf">Introduction to LaTeX (PDF)</a></p>
+<p class="indent"><a href="data_code/econ_prosem615.mp4">Introduction to LaTeX - #econpresem (MP4)</a></p>
+
+
+
+</div><!-- end::contentContainer -->
+
+
+
+
+<div id="footer">
+James Lake | Associate Professor of Economics | University of Tennessee | <a href="mailto: jlake7@utk.edu">jlake7@utk.edu</a>
+</div>
+
+</div>
+</body>
+</html>
