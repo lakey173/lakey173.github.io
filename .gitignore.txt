@@ -1,0 +1,21 @@
+# Mac system files
+.DS_Store
+
+# Windows junk
+Thumbs.db
+desktop.ini
+
+# Large archives
+*.zip
+*.tar
+*.gz
+
+# Stata files (useful for other repos)
+*.dta
+*.smcl
+*.log
+*.gph
+
+# temporary files
+*.tmp
+*.bak
