@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Architecture Reference — Clo-Author Theory</title>
+  <meta name="description" content="Architecture reference for clo-author-theory: system layers, pipeline, worker-critic loops, dependency graph, scoring protocol.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="index.html" class="brand">Clo-Author Theory</a>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+  <ul class="nav-links">
+    <li><a href="index.html">Quick Start</a></li>
+    <li><a href="user-guide.html">User Guide</a></li>
+    <li><a href="agents.html">Agents</a></li>
+    <li><a href="architecture.html" class="active">Architecture</a></li>
+    <li><a href="customization.html">Customization</a></li>
+    <li><a href="reference.html">Reference</a></li>
+    <li><a href="changelog.html">About</a></li>
+  </ul>
+  <a href="https://github.com/lakey173/clo-author-theory" class="github-link">
+    <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+    GitHub
+  </a>
+</nav>
+
+<!-- RIGHT SIDEBAR -->
+<aside class="page-sidebar">
+  <h4>On this page</h4>
+  <ul>
+    <li><a href="#system-overview">System Overview</a></li>
+    <li><a href="#the-pipeline">The Pipeline</a></li>
+    <li><a href="#worker-critic-loop">Worker-Critic Loop</a></li>
+    <li><a href="#escalation-routing">Escalation Routing</a></li>
+    <li><a href="#dependency-graph">Dependency Graph</a></li>
+    <li><a href="#scoring-protocol">Scoring Protocol</a></li>
+    <li><a href="#severity-gradient">Severity Gradient</a></li>
+    <li><a href="#parallel-dispatch">Parallel Dispatch</a></li>
+    <li><a href="#plan-first-protocol">Plan-First Protocol</a></li>
+    <li><a href="#working-paper-format">Working Paper Format</a></li>
+    <li><a href="#constitutional-governance">Constitutional Governance</a></li>
+  </ul>
+</aside>
+
+<main>
+
+  <h1>Architecture Reference</h1>
+  <p class="subtitle">How the pieces fit together</p>
+
+  <!-- SYSTEM OVERVIEW -->
+  <h2 id="system-overview">System Overview</h2>
+
+  <p>Six configuration layers control the system:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Layer</th>
+        <th>File(s)</th>
+        <th>Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Constitution</td><td><code>CLAUDE.md</code></td><td>Project identity, folder structure, commands, current state</td></tr>
+      <tr><td>Rules</td><td><code>.claude/rules/*.md</code> (7 files)</td><td>Workflow, quality, agents, logging, revision, content standards, working paper format</td></tr>
+      <tr><td>Agents</td><td><code>.claude/agents/*.md</code> (18 files)</td><td>Specialized agent definitions with tools and models</td></tr>
+      <tr><td>Skills</td><td><code>.claude/skills/*/SKILL.md</code> (11 skills)</td><td>Slash commands that dispatch agents</td></tr>
+      <tr><td>References</td><td><code>.claude/references/</code></td><td>Domain profile, journal profiles</td></tr>
+      <tr><td>Hooks</td><td><code>.claude/hooks/</code> (4 hooks)</td><td>File protection, context survival, merge detection</td></tr>
+    </tbody>
+  </table>
+
+  <!-- THE PIPELINE -->
+  <h2 id="the-pipeline">The Pipeline</h2>
+
+  <pre class="pipeline">         DISCOVERY                    MODEL DESIGN              EXECUTION
+    &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;          &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;     &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+    &#9474;  /discover       &#9474;          &#9474;  /model           &#9474;     &#9474;  /solve               &#9474;
+    &#9474;  &#9500;&#9472; interview    &#9474;          &#9474;  Model-Designer   &#9474;     &#9474;  Derivation-Engineer  &#9474;
+    &#9474;  &#9500;&#9472; lit          &#9474;    &#9472;&#9472;&#9654;   &#9474;  + model-critic   &#9474; &#9472;&#9472;&#9654; &#9474;  &#8741; Theory-Coder       &#9474;
+    &#9474;  &#9492;&#9472; model        &#9474;          &#9474;                   &#9474;     &#9474;  + theory-coder-critic&#9474;
+    &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;          &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;     &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;
+                                         &#9474;                          &#9474;
+                                    &#9888; /sanity                       &#9474;
+                                   (MUST PASS)                      &#9660;
+                                                          &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+         PEER REVIEW                   WRITING            &#9474;  /write           &#9474;
+    &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;          &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;     &#9474;  Writer           &#9474;
+    &#9474;  /review --peer  &#9474;   &#9668;&#9472;&#9472;   &#9474;  /review --all   &#9474; &#9668;&#9472;&#9472; &#9474;  + writer-critic  &#9474;
+    &#9474;  Editor          &#9474;          &#9474;  All critics     &#9474;     &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;
+    &#9474;  domain-referee  &#9474;          &#9474;  parallel        &#9474;
+    &#9474;  theory-referee  &#9474;          &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;
+    &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;
+            &#9474;
+            &#9660;
+    &#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;
+    &#9474;  /submit final   &#9474;
+    &#9474;  Score &ge; 95      &#9474;
+    &#9474;  All comps &ge; 80  &#9474;
+    &#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;</pre>
+
+  <!-- WORKER-CRITIC LOOP -->
+  <h2 id="worker-critic-loop">Worker-Critic Loop</h2>
+
+  <p>Every creator agent is paired with a critic. The loop runs up to 3 rounds:</p>
+
+  <pre class="pipeline">Worker produces artifact
+    &#9474;
+    &#9660;
+Critic reviews &rarr; Score &ge; 80?
+    &#9474;                    &#9474;
+    NO                  YES
+    &#9474;                    &#9474;
+    &#9660;                    &#9660;
+Worker fixes         &#10003; Approved
+(Round 2)
+    &#9474;
+    &#9660;
+Critic re-reviews &rarr; Score &ge; 80?
+    &#9474;                    &#9474;
+    NO                  YES
+    &#9474;                    &#9474;
+    &#9660;                    &#9660;
+Worker fixes         &#10003; Approved
+(Round 3)
+    &#9474;
+    &#9660;
+Critic re-reviews &rarr; Score &ge; 80?
+    &#9474;                    &#9474;
+    NO                  YES
+    &#9474;                    &#9474;
+    &#9660;                    &#9660;
+ESCALATE             &#10003; Approved</pre>
+
+  <p><strong>Separation of Powers:</strong> Critics never create artifacts. Creators never self-score. A critic who fixes its own findings has incentive to find only fixable issues.</p>
+
+  <!-- ESCALATION ROUTING -->
+  <h2 id="escalation-routing">Escalation Routing</h2>
+
+  <p>When 3 rounds fail, the system escalates:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Pair</th>
+        <th>Escalates To</th>
+        <th>Rationale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Theory-Coder + Critic</td><td>Model-Designer</td><td>Model setup may be wrong</td></tr>
+      <tr><td>Derivation-Engineer + Critic</td><td>Model-Designer</td><td>Derivation may require model revision</td></tr>
+      <tr><td>Writer + Writer-Critic</td><td>Domain-Referee</td><td>Framing may need rethinking</td></tr>
+      <tr><td>Model-Designer + Model-Critic</td><td>User</td><td>Fundamental design disagreement</td></tr>
+      <tr><td>Librarian + Critic</td><td>User</td><td>Scope disagreement</td></tr>
+      <tr><td>Literature-Explorer + Critic</td><td>User</td><td>Modeling landscape deadlock</td></tr>
+      <tr><td>Storyteller + Critic</td><td>Writer</td><td>Paper structure may need reworking</td></tr>
+    </tbody>
+  </table>
+
+  <!-- DEPENDENCY GRAPH -->
+  <h2 id="dependency-graph">Dependency Graph</h2>
+
+  <p>Phases activate by dependency, not sequence:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Phase</th>
+        <th>Requires</th>
+        <th>Can Re-enter?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Discovery</td><td>Research idea</td><td>Always</td></tr>
+      <tr><td>Modeling Landscape</td><td>Research idea</td><td>Always</td></tr>
+      <tr><td>Online Appendix Gate</td><td>Landscape score &ge; 80</td><td>Yes</td></tr>
+      <tr><td>Model Design</td><td>Gate cleared</td><td>Yes (new approaches trigger re-design)</td></tr>
+      <tr><td>Sanity Check</td><td>Approved model (&ge; 80)</td><td>Yes (revision triggers re-sanity)</td></tr>
+      <tr><td>Execution (Proofs)</td><td>Model + Sanity PASS</td><td>Yes</td></tr>
+      <tr><td>Execution (Code)</td><td>Model + Sanity PASS</td><td>Yes</td></tr>
+      <tr><td>Writing</td><td>Proofs + Code (&ge; 80)</td><td>Yes</td></tr>
+      <tr><td>Peer Review</td><td>Paper (writer-critic &ge; 80)</td><td>Yes</td></tr>
+      <tr><td>Submission</td><td>Editor accepts + Verifier PASS + &ge; 95</td><td>Terminal</td></tr>
+      <tr><td>Presentation</td><td>Paper (parallel with review)</td><td>Yes</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout tip">
+    <p>
+      <strong>Targeted re-entry:</strong> A referee says "the existence proof has a gap." The Orchestrator routes back to Derivation-Engineer only (not through the full pipeline), theory-coder-critic reviews, Writer updates the proof sketch.
+    </p>
+  </div>
+
+  <!-- SCORING PROTOCOL -->
+  <h2 id="scoring-protocol">Scoring Protocol</h2>
+
+  <p>Weighted aggregate gates submission:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Component</th>
+        <th>Weight</th>
+        <th>Source</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Literature coverage</td><td>10%</td><td>Librarian-Critic</td></tr>
+      <tr><td>Model setup</td><td>25%</td><td>Model-Critic</td></tr>
+      <tr><td>Proofs / derivations</td><td>25%</td><td>Theory-Coder-Critic (avg of proofs + code)</td></tr>
+      <tr><td>Paper quality</td><td>20%</td><td>Avg of Domain-Referee + Theory-Referee</td></tr>
+      <tr><td>Manuscript polish</td><td>10%</td><td>Writer-Critic</td></tr>
+      <tr><td>Compilation / verification</td><td>10%</td><td>Verifier (pass/fail &rarr; 0 or 100)</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>Per-component minimum:</strong> No component below 80 for submission. A polished manuscript cannot compensate for an incorrect proof.</p>
+
+  <p><strong>Missing components:</strong> If a component hasn't been scored, it's excluded and remaining weights renormalized.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Gate</th>
+        <th>Overall Score</th>
+        <th>Per-Component Min</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Commit</td><td>&ge; 80</td><td>None enforced</td></tr>
+      <tr><td>PR</td><td>&ge; 90</td><td>None enforced</td></tr>
+      <tr><td>Submission</td><td>&ge; 95</td><td>&ge; 80 per component</td></tr>
+      <tr><td>Below 80</td><td>&lt; 80</td><td>Blocked</td></tr>
+    </tbody>
+  </table>
+
+  <!-- SEVERITY GRADIENT -->
+  <h2 id="severity-gradient">Severity Gradient</h2>
+
+  <p>Critics calibrate rigor by phase:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Phase</th>
+        <th>Critic Stance</th>
+        <th>Example: Missing proof</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Discovery</td><td>Encouraging</td><td>&minus;5</td></tr>
+      <tr><td>Model Design</td><td>Constructive</td><td>&minus;5</td></tr>
+      <tr><td>Sanity Check</td><td>Strict</td><td>&minus;15</td></tr>
+      <tr><td>Execution</td><td>Strict</td><td>&minus;25</td></tr>
+      <tr><td>Peer Review</td><td>Adversarial</td><td>&minus;35</td></tr>
+      <tr><td>Presentation</td><td>Professional</td><td>Advisory</td></tr>
+    </tbody>
+  </table>
+
+  <!-- PARALLEL DISPATCH -->
+  <h2 id="parallel-dispatch">Parallel Dispatch</h2>
+
+  <p>Independent phases run concurrently:</p>
+  <ul>
+    <li>Literature (Librarian) and Modeling Landscape (Literature-Explorer) run in parallel</li>
+    <li>Derivation-Engineer and Theory-Coder run in parallel (both from the same model memo)</li>
+    <li>Presentation can run parallel with Peer Review</li>
+    <li><code>/review --all</code> dispatches all critics in parallel</li>
+  </ul>
+
+  <!-- PLAN-FIRST PROTOCOL -->
+  <h2 id="plan-first-protocol">Plan-First Protocol</h2>
+
+  <p>For non-trivial tasks:</p>
+  <ol>
+    <li>Enter plan mode</li>
+    <li>Check MEMORY.md for relevant learnings</li>
+    <li>Draft plan (what changes, which files, in what order)</li>
+    <li>Save to <code>quality_reports/plans/YYYY-MM-DD_description.md</code></li>
+    <li>Present to user for approval</li>
+    <li>Execute via orchestrator</li>
+  </ol>
+
+  <p>Plans survive context compression &mdash; they're saved to disk.</p>
+
+  <!-- WORKING PAPER FORMAT -->
+  <h2 id="working-paper-format">Working Paper Format</h2>
+
+  <p>All papers follow the standard economics theory working paper format:</p>
+  <ul>
+    <li><code>\documentclass[12pt]{article}</code> with 1-inch margins</li>
+    <li><code>\onehalfspacing</code> (1.5&times; line spacing &mdash; theory standard)</li>
+    <li><code>amsthm</code> theorem environments with shared counter (except Assumptions)</li>
+    <li><code>cleveref</code> for auto-detected cross-references</li>
+    <li><code>biblatex</code> + <code>biber</code> (not natbib + bibtex)</li>
+    <li><code>hyperref</code> loaded last</li>
+    <li>Appendix with <code>\numberwithin{theorem}{section}</code> for Proposition A.1, Lemma B.1, etc.</li>
+  </ul>
+
+  <p>See the <a href="customization.html#2-rules-7-files">rules files</a> for the complete reference preamble.</p>
+
+  <!-- CONSTITUTIONAL GOVERNANCE -->
+  <h2 id="constitutional-governance">Constitutional Governance</h2>
+
+  <p>Before committing, ask: would another theory researcher forking this repo benefit from this change?</p>
+  <ul>
+    <li><strong>Yes</strong> &rarr; commit (workflow patterns, skills, agents, rules)</li>
+    <li><strong>No</strong> &rarr; keep local in <code>.claude/state/</code> (machine paths, API keys, institutional details)</li>
+  </ul>
+
+</main>
+
+<footer>
+  Adapted from <a href="https://hsantanna.org/clo-author/">clo-author</a> by Hugo Sant'Anna.
+  Built for applied economic theory research with <a href="https://claude.ai/claude-code">Claude Code</a>.
+</footer>
+
+<script>
+// highlight active sidebar link on scroll
+document.addEventListener('scroll', () => {
+  const links = document.querySelectorAll('.page-sidebar a');
+  const sections = [...links].map(l => document.querySelector(l.getAttribute('href')));
+  let current = '';
+  sections.forEach(s => { if (s && s.getBoundingClientRect().top <= 100) current = s.id; });
+  links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
+});
+</script>
+</body>
+</html>

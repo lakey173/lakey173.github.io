@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User Guide — Clo-Author Theory</title>
+  <meta name="description" content="Complete workflow guide for applied economic theory research with clo-author-theory and Claude Code.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="index.html" class="brand">Clo-Author Theory</a>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+  <ul class="nav-links">
+    <li><a href="index.html">Quick Start</a></li>
+    <li><a href="user-guide.html" class="active">User Guide</a></li>
+    <li><a href="agents.html">Agents</a></li>
+    <li><a href="architecture.html">Architecture</a></li>
+    <li><a href="customization.html">Customization</a></li>
+    <li><a href="reference.html">Reference</a></li>
+    <li><a href="changelog.html">About</a></li>
+  </ul>
+  <a href="https://github.com/lakey173/clo-author-theory" class="github-link">
+    <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+    GitHub
+  </a>
+</nav>
+
+<!-- RIGHT SIDEBAR -->
+<aside class="page-sidebar">
+  <h4>On this page</h4>
+  <ul>
+    <li><a href="#pipeline">The Theory Research Pipeline</a></li>
+    <li><a href="#phase-1-discovery">Phase 1: Discovery</a></li>
+    <li><a href="#phase-2-model-design">Phase 2: Model Design</a></li>
+    <li><a href="#phase-3-sanity-check">Phase 3: Sanity Check</a></li>
+    <li><a href="#phase-4-execution">Phase 4: Execution</a></li>
+    <li><a href="#phase-5-writing">Phase 5: Writing</a></li>
+    <li><a href="#phase-6-review">Phase 6: Review</a></li>
+    <li><a href="#phase-7-revision">Phase 7: Revision</a></li>
+    <li><a href="#phase-8-presentation">Phase 8: Presentation</a></li>
+    <li><a href="#phase-9-submission">Phase 9: Submission</a></li>
+    <li><a href="#quality-gates">Quality Gates</a></li>
+    <li><a href="#exploration-workflow">Exploration Workflow</a></li>
+    <li><a href="#when-claude-asks">When Claude Asks You</a></li>
+    <li><a href="#troubleshooting">Troubleshooting</a></li>
+  </ul>
+</aside>
+
+<main>
+
+  <h1>User Guide</h1>
+  <p class="subtitle">Complete Workflow for Applied Economic Theory Research</p>
+
+  <!-- PIPELINE -->
+  <h2 id="pipeline">The Theory Research Pipeline</h2>
+
+  <pre class="pipeline">/discover interview  &rarr;  Research Spec + Domain Profile
+        &darr;
+/discover lit        &rarr;  Literature Synthesis (Librarian + librarian-critic)
+/discover model      &rarr;  Modeling Landscape (Literature-explorer + literature-explorer-critic)
+        &darr;
+&#9888; ONLINE APPENDIX GATE &mdash; user uploads published-paper appendices
+        &darr;
+/model               &rarr;  Model Memo (Model-Designer + model-critic)
+        &darr;
+/sanity              &rarr;  Model Sanity Check &larr; REQUIRED GATE (must PASS)
+        &darr;
+/solve               &rarr;  Proofs + Computation (Derivation-engineer &#8741; Theory-coder)
+        &darr;
+/write               &rarr;  Paper Sections (Writer + writer-critic)
+        &darr;
+/review              &rarr;  Quality Score + Peer Review (domain-referee + theory-referee)
+        &darr;
+/submit              &rarr;  Final Gate (score &ge; 95, all components &ge; 80)</pre>
+
+  <p>Enter at any stage. Use <code>/new-project</code> for the full pipeline.</p>
+
+  <!-- PHASE 1 -->
+  <h2 id="phase-1-discovery">Phase 1: Discovery</h2>
+
+  <p>Three modes:</p>
+
+  <h3><code>/discover interview [topic]</code></h3>
+  <p>
+    Structured interview to formalize your research idea. Claude asks about your modeling tradition,
+    key assumptions, equilibrium concept, and expected results. Produces a research specification
+    and fills in the domain profile.
+  </p>
+
+  <h3><code>/discover lit [topic]</code></h3>
+  <p>
+    Comprehensive literature review. Dispatches the Librarian + librarian-critic pair. Searches
+    top-5 generals (AER, QJE, JPE, Econometrica, REStud), NBER working papers, field journals,
+    SSRN/RePEc. Produces annotated bibliography with proximity scores, BibTeX entries, and a
+    frontier map.
+  </p>
+
+  <h3><code>/discover model [topic]</code></h3>
+  <p>
+    Modeling landscape exploration. Dispatches the Literature-Explorer + literature-explorer-critic
+    pair. Searches for papers using similar model structures. Pays special attention to online
+    appendices where proof machinery lives. Produces proof technique catalog and benchmark model
+    identification.
+  </p>
+
+  <div class="callout callout-warning">
+    <p>
+      <strong>&#9888; Online Appendix Gate.</strong> After <code>/discover model</code> scores &ge; 80,
+      the pipeline pauses. The Literature-explorer lists proximity-1 and proximity-2 papers and asks
+      you to download their online appendices into <code>master_supporting_docs/</code>. This ensures
+      proof techniques from benchmark papers are available before model design &mdash; not discovered
+      mid-derivation. NBER working papers bundle appendices in the main PDF; no separate download needed.
+    </p>
+  </div>
+
+  <!-- PHASE 2 -->
+  <h2 id="phase-2-model-design">Phase 2: Model Design</h2>
+
+  <p><strong><code>/model [research question]</code></strong> &mdash; Dispatches the Model-Designer + model-critic pair.</p>
+
+  <p>The Model-Designer proposes a complete model setup:</p>
+  <ul>
+    <li>Players and their roles</li>
+    <li>Information structure (who knows what, when)</li>
+    <li>Timing (sequence of moves)</li>
+    <li>Strategy spaces</li>
+    <li>Payoff functions</li>
+    <li>Equilibrium concept with justification</li>
+    <li>All assumptions (numbered: A1, A2, ...)</li>
+    <li>Benchmark model and parameter mapping</li>
+    <li>Tractability assessment (closed-form? implicit? numerical?)</li>
+    <li>Expected results and objects of interest</li>
+  </ul>
+
+  <p>The model-critic evaluates through 5 sequential phases (with early stopping):</p>
+  <ol>
+    <li>Can the model answer the research question?</li>
+    <li>Is the model setup sound?</li>
+    <li>Is the model tractable?</li>
+    <li>Does it produce interesting results?</li>
+    <li>Literature fit and generality?</li>
+  </ol>
+
+  <p>Must score &ge; 80 to proceed.</p>
+
+  <!-- PHASE 3 -->
+  <h2 id="phase-3-sanity-check">Phase 3: Sanity Check</h2>
+
+  <p><strong><code>/sanity</code></strong> &mdash; Required gate between model design and derivations.</p>
+
+  <p>Checks 7 critical items:</p>
+  <ol>
+    <li>Interior solution exists (or corner is interesting and intended)</li>
+    <li>Equilibrium is not degenerate</li>
+    <li>Parameters are not knife-edge</li>
+    <li>Comparative statics are well-defined</li>
+    <li>Objective is concave where assumed</li>
+    <li>Equilibrium existence is plausible</li>
+    <li>Solution is not trivial</li>
+  </ol>
+
+  <p>Plus 1 advisory item:</p>
+  <ol start="8">
+    <li>Testable predictions exist</li>
+  </ol>
+
+  <div class="callout callout-important">
+    <p>
+      <strong>Hard Gate.</strong> If any critical item fails, you return to <code>/model</code>.
+      Derivations do NOT begin until sanity PASS. This saves weeks of wasted work on models that
+      don't have well-defined equilibria.
+    </p>
+  </div>
+
+  <!-- PHASE 4 -->
+  <h2 id="phase-4-execution">Phase 4: Execution</h2>
+
+  <p><strong><code>/solve</code></strong> &mdash; Dispatches three agents in parallel:</p>
+
+  <h3>Derivation-Engineer</h3>
+  <p>Produces formal proofs in LaTeX:</p>
+  <ul>
+    <li>First-order conditions and second-order checks</li>
+    <li>Equilibrium existence and uniqueness</li>
+    <li>Equilibrium characterization</li>
+    <li>Comparative statics (all parameters of interest)</li>
+    <li>Welfare analysis (if applicable)</li>
+    <li>All proofs use <code>\begin{proof}[Proof of \cref{prop:X}]</code> format</li>
+  </ul>
+
+  <h3>Theory-Coder</h3>
+  <p>Produces computational verification:</p>
+  <ul>
+    <li>Symbolic verification (SymPy/Maple): verify FOCs, closed-form solutions, comparative statics signs</li>
+    <li>Numerical illustrations: equilibrium across parameter grids</li>
+    <li>Publication-quality figures (matplotlib): comparative statics plots, best-response diagrams</li>
+    <li>Verification log: analytical vs. numerical results for every proposition</li>
+  </ul>
+
+  <h3>Theory-Coder-Critic</h3>
+  <p>Reviews both:</p>
+  <ul>
+    <li>Cross-checks proofs against code</li>
+    <li>Verifies proof-code consistency</li>
+    <li>Flags any proposition where analytical and numerical results disagree</li>
+  </ul>
+
+  <!-- PHASE 5 -->
+  <h2 id="phase-5-writing">Phase 5: Writing</h2>
+
+  <p><strong><code>/write [section]</code></strong> &mdash; Dispatches the Writer + writer-critic pair.</p>
+
+  <p>Available sections: <code>intro</code>, <code>model</code>, <code>equilibrium</code>,
+  <code>results</code>, <code>conclusion</code>, <code>appendix</code>, <code>full</code></p>
+
+  <p>Theory paper conventions enforced:</p>
+  <ul>
+    <li>Contribution statement in first 2 pages of introduction</li>
+    <li>All assumptions numbered (A1, A2, ...) and formally stated before first use</li>
+    <li>Every proposition cites its appendix proof</li>
+    <li>Proof sketches in main text must not be stronger than full proofs</li>
+    <li><code>\cref{}</code> for all cross-references</li>
+    <li>Anti-hedging pass (removes "interestingly", "arguably", "it is worth noting")</li>
+    <li>Humanizer pass (strips 24 AI writing patterns)</li>
+  </ul>
+
+  <p><code>/write humanize [file]</code> &mdash; Standalone humanizer pass on existing text.</p>
+
+  <!-- PHASE 6 -->
+  <h2 id="phase-6-review">Phase 6: Review</h2>
+
+  <p><strong><code>/review</code></strong> &mdash; Routes to appropriate critics based on flags.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Flag</th>
+        <th>What It Does</th>
+        <th>Agents</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>(no flag, .tex file)</td><td>Comprehensive review</td><td>writer-critic + theory-coder-critic + verifier</td></tr>
+      <tr><td><code>--peer [journal]</code></td><td>Full peer review</td><td>editor &rarr; domain-referee + theory-referee &rarr; editorial decision</td></tr>
+      <tr><td><code>--stress [journal]</code></td><td>Hostile stress test</td><td>Both referees skeptic + 2 critical pet peeves each</td></tr>
+      <tr><td><code>--proofs</code></td><td>Proof review only</td><td>theory-coder-critic (4 categories)</td></tr>
+      <tr><td><code>--code</code></td><td>Computation review only</td><td>theory-coder-critic (code categories)</td></tr>
+      <tr><td><code>--proofread</code></td><td>Manuscript polish</td><td>writer-critic (6 categories)</td></tr>
+      <tr><td><code>--all</code></td><td>Paper excellence</td><td>All critics in parallel</td></tr>
+    </tbody>
+  </table>
+
+  <p>Peer review simulates the editorial process:</p>
+  <ol>
+    <li>Editor desk-reviews (novelty check, desk reject or send to referees)</li>
+    <li>Two independent referees (domain-referee + theory-referee) produce blind reports</li>
+    <li>Editor synthesizes decision: Accept / Minor / Major / Reject</li>
+  </ol>
+
+  <!-- PHASE 7 -->
+  <h2 id="phase-7-revision">Phase 7: Revision</h2>
+
+  <p><strong><code>/revise [referee-report]</code></strong> &mdash; Routes referee comments by classification:</p>
+  <ul>
+    <li><strong>NEW ANALYSIS</strong> &rarr; Theory-coder (new computation needed)</li>
+    <li><strong>CLARIFICATION</strong> &rarr; Writer (text revision sufficient)</li>
+    <li><strong>DISAGREE</strong> &rarr; Flagged for you (never autonomously pushes back on referees)</li>
+    <li><strong>MINOR</strong> &rarr; Writer (typos, formatting)</li>
+  </ul>
+
+  <p>Produces point-by-point response letter mapping each comment to specific changes.</p>
+
+  <!-- PHASE 8 -->
+  <h2 id="phase-8-presentation">Phase 8: Presentation</h2>
+
+  <p><strong><code>/talk create [format]</code></strong> &mdash; Creates Beamer presentations from the paper.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Format</th>
+        <th>Slides</th>
+        <th>Duration</th>
+        <th>Use Case</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>job-market</td><td>40&ndash;50</td><td>45&ndash;60 min</td><td>Full story, all results</td></tr>
+      <tr><td>seminar</td><td>25&ndash;35</td><td>30&ndash;45 min</td><td>Main result + 2 robustness</td></tr>
+      <tr><td>short</td><td>10&ndash;15</td><td>15 min</td><td>Question, method, key result</td></tr>
+      <tr><td>lightning</td><td>3&ndash;5</td><td>5 min</td><td>Hook + one result</td></tr>
+    </tbody>
+  </table>
+
+  <p>Also supports Quarto RevealJS with <code>--quarto</code> flag.</p>
+
+  <!-- PHASE 9 -->
+  <h2 id="phase-9-submission">Phase 9: Submission</h2>
+
+  <p><strong><code>/submit</code></strong> modes:</p>
+  <ul>
+    <li><code>target</code> &mdash; Rank 3 target journals with rationale</li>
+    <li><code>package</code> &mdash; Build replication package</li>
+    <li><code>audit</code> &mdash; Verify replication package</li>
+    <li><code>final [journal]</code> &mdash; Final gate: score &ge; 95, all components &ge; 80. Generates cover letter and submission checklist.</li>
+  </ul>
+
+  <!-- QUALITY GATES -->
+  <h2 id="quality-gates">Quality Gates</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Score</th>
+        <th>Gate</th>
+        <th>What It Means</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>&ge; 95</td><td>Submission</td><td>Ready for top journals (all components &ge; 80)</td></tr>
+      <tr><td>&ge; 90</td><td>PR</td><td>Ready to merge</td></tr>
+      <tr><td>&ge; 80</td><td>Commit</td><td>Ready to commit</td></tr>
+      <tr><td>&lt; 80</td><td><strong>Blocked</strong></td><td>Must fix critical/major issues</td></tr>
+      <tr><td>&mdash;</td><td>Advisory</td><td>Talks: reported only, non-blocking</td></tr>
+    </tbody>
+  </table>
+
+  <p>
+    <strong>Weighted aggregate:</strong> Literature 10% + Model Setup 25% + Proofs/Computation 25%
+    + Paper Quality 20% + Polish 10% + Verification 10%
+  </p>
+
+  <!-- EXPLORATION WORKFLOW -->
+  <h2 id="exploration-workflow">Exploration Workflow</h2>
+
+  <p>For experimental model sketches and proof-of-concept work:</p>
+  <ul>
+    <li>Work in <code>explorations/</code> folder</li>
+    <li>60/100 quality threshold (vs. 80/100 for production)</li>
+    <li>No plan needed &mdash; just create, verify, decide (keep/graduate/archive)</li>
+    <li>Graduate to production when quality &ge; 80 and results verified</li>
+  </ul>
+
+  <!-- WHEN CLAUDE ASKS -->
+  <h2 id="when-claude-asks">When Claude Asks You</h2>
+
+  <p>Claude pauses and asks for your decision on:</p>
+  <ul>
+    <li><strong>Model design forks:</strong> "Option A (screening) vs. Option B (signaling). Which?"</li>
+    <li><strong>Equilibrium concept:</strong> "PBE vs. NE for this information structure?"</li>
+    <li><strong>Sanity failure:</strong> "Model fails interior solution check &mdash; revise model or proceed with corner?"</li>
+    <li><strong>Disagreement with referee:</strong> "DISAGREE classification &mdash; please review"</li>
+    <li><strong>After 3 strikes:</strong> "Derivation-engineer and theory-coder-critic can't agree &mdash; your call"</li>
+  </ul>
+
+  <p>Claude executes without asking on:</p>
+  <ul>
+    <li>Obvious algebraic manipulations in proofs</li>
+    <li>Verification (compilation, consistency checks)</li>
+    <li>Documentation (logs, commits)</li>
+    <li>Figure generation per established standards</li>
+  </ul>
+
+  <!-- TROUBLESHOOTING -->
+  <h2 id="troubleshooting">Troubleshooting</h2>
+
+  <p><strong>LaTeX doesn't compile</strong> &mdash; Run the 3-pass sequence:
+  <code>xelatex &rarr; biber &rarr; xelatex &rarr; xelatex</code>.
+  Make sure <code>cleveref</code> loads after <code>hyperref</code>.</p>
+
+  <p><strong>SymPy verification fails</strong> &mdash; Check that your model's functional forms match
+  between the model memo and the verification script. Common issue: different variable names.</p>
+
+  <p><strong>Sanity check keeps failing</strong> &mdash; The model may have a fundamental issue. Don't
+  try to force it through &mdash; revisit the model setup with <code>/model</code>.</p>
+
+  <p><strong>Agent loops (3 strikes)</strong> &mdash; The system escalates automatically. If you see
+  repeated failures, it usually means the model needs revision, not the proof technique.</p>
+
+  <p><strong>Context getting long</strong> &mdash; The system auto-compresses. Important state is saved
+  to disk (plans, session logs, MEMORY.md). After compression, Claude resumes by reading the most
+  recent plan.</p>
+
+</main>
+
+<footer>
+  Adapted from <a href="https://hsantanna.org/clo-author/">clo-author</a> by Hugo Sant'Anna.
+  Built for applied economic theory research with <a href="https://claude.ai/claude-code">Claude Code</a>.
+</footer>
+
+<script>
+// highlight active sidebar link on scroll
+document.addEventListener('scroll', () => {
+  const links = document.querySelectorAll('.page-sidebar a');
+  const sections = [...links].map(l => document.querySelector(l.getAttribute('href')));
+  let current = '';
+  sections.forEach(s => { if (s && s.getBoundingClientRect().top <= 100) current = s.id; });
+  links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
+});
+</script>
+</body>
+</html>
