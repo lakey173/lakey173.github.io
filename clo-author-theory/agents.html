@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agents — Clo-Author Theory</title>
+  <meta name="description" content="Meet the 18 specialized agents that power clo-author-theory — from literature discovery to journal submission.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="index.html" class="brand">Clo-Author Theory</a>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+  <ul class="nav-links">
+    <li><a href="index.html">Quick Start</a></li>
+    <li><a href="user-guide.html">User Guide</a></li>
+    <li><a href="agents.html" class="active">Agents</a></li>
+    <li><a href="architecture.html">Architecture</a></li>
+    <li><a href="customization.html">Customization</a></li>
+    <li><a href="reference.html">Reference</a></li>
+    <li><a href="changelog.html">About</a></li>
+  </ul>
+  <a href="https://github.com/lakey173/clo-author-theory" class="github-link">
+    <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+    GitHub
+  </a>
+</nav>
+
+<!-- RIGHT SIDEBAR -->
+<aside class="page-sidebar">
+  <h4>On this page</h4>
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#researchers">Researchers (Discovery)</a></li>
+    <li><a href="#model-architect">Model Architect</a></li>
+    <li><a href="#builders">Builders (Execution)</a></li>
+    <li><a href="#writer">Writer</a></li>
+    <li><a href="#reviewers">Reviewers (Peer Review)</a></li>
+    <li><a href="#presentation">Presentation</a></li>
+    <li><a href="#infrastructure">Infrastructure</a></li>
+    <li><a href="#worker-critic-pairs">Worker-Critic Pairs</a></li>
+    <li><a href="#multi-model-strategy">Multi-Model Strategy</a></li>
+  </ul>
+</aside>
+
+<main>
+
+  <h1>Meet the Agents</h1>
+  <p class="subtitle">18 specialized agents across 6 phases of theory research</p>
+
+  <div class="callout">
+    <p>Every creator has a paired critic. Critics score but never create. Creators produce but never self-score.</p>
+  </div>
+
+  <!-- OVERVIEW -->
+  <h2 id="overview">Overview</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Phase</th>
+        <th>Agents</th>
+        <th>What They Do</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Discovery</td><td>Librarian, Literature-Explorer</td><td>Find papers, map modeling landscape</td></tr>
+      <tr><td>Model Design</td><td>Model-Designer</td><td>Design model setup, assumptions, equilibrium</td></tr>
+      <tr><td>Execution</td><td>Derivation-Engineer, Theory-Coder</td><td>Formal proofs, computational verification</td></tr>
+      <tr><td>Writing</td><td>Writer</td><td>Draft paper sections</td></tr>
+      <tr><td>Peer Review</td><td>Editor, Domain-Referee, Theory-Referee</td><td>Simulated editorial process</td></tr>
+      <tr><td>Presentation</td><td>Storyteller</td><td>Beamer and Quarto talks</td></tr>
+      <tr><td>Infrastructure</td><td>Orchestrator, Verifier</td><td>Coordination, compilation checks</td></tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <!-- RESEARCHERS -->
+  <h2 id="researchers">Researchers (Discovery Phase)</h2>
+
+  <div class="agent-grid">
+    <div class="agent-card">
+      <h4>Librarian</h4>
+      <div class="role">Literature collector and organizer</div>
+      <div class="detail">
+        <p><strong>Produces:</strong> Annotated bibliography, BibTeX entries, frontier map, positioning recommendation</p>
+        <p><strong>Reviewed by:</strong> Librarian-Critic</p>
+        <p>Searches top-5 generals (AER, QJE, JPE, Econometrica, REStud), NBER, field journals, SSRN/RePEc. Assigns proximity scores (1&ndash;5) to each paper. Produces one-paragraph summaries. Never fabricates citations &mdash; marks unverified references.</p>
+      </div>
+    </div>
+    <div class="agent-card">
+      <h4>Librarian-Critic</h4>
+      <div class="role">Reviews literature coverage</div>
+      <div class="detail">
+        <p><strong>Reviews:</strong> Coverage, gaps, recency, journal quality, categorization</p>
+        <p><strong>Deductions:</strong> Missing seminal papers (&minus;20), no methods literature (&minus;15), &gt;50% working papers (&minus;10), missing recent work (&minus;10)</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="agent-grid">
+    <div class="agent-card">
+      <h4>Literature-Explorer</h4>
+      <div class="role">Modeling landscape scout</div>
+      <div class="detail">
+        <p><strong>Produces:</strong> Modeling landscape, proof technique catalog, benchmark model identification</p>
+        <p><strong>Reviewed by:</strong> Literature-Explorer-Critic</p>
+        <p>The critical insight: online appendices contain the real proof machinery. Published papers show sketch proofs in the main text; the technical details (existence arguments, regularity conditions, comparative statics derivations) live in the appendix. The Literature-Explorer's job is to find these and document the techniques used.</p>
+        <p>Ends every run with a named prompt listing proximity-1/2 papers whose online appendices should be downloaded into <code>master_supporting_docs/</code>.</p>
+      </div>
+    </div>
+    <div class="agent-card">
+      <h4>Literature-Explorer-Critic</h4>
+      <div class="role">Reviews modeling landscape</div>
+      <div class="detail">
+        <p><strong>Reviews:</strong> Modeling landscape relevance, appendix coverage, benchmark identification, proof techniques</p>
+        <p><strong>Deductions:</strong> Wrong benchmark (&minus;25), appendices not examined (&minus;20), seminal paper missing (&minus;15)</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- MODEL ARCHITECT -->
+  <h2 id="model-architect">Model Architect</h2>
+
+  <div class="agent-grid">
+    <div class="agent-card">
+      <h4>Model-Designer <span class="badge info">Opus</span></h4>
+      <div class="role">Designs the complete model setup</div>
+      <div class="detail">
+        <p><strong>Produces:</strong> Model memo (players, timing, payoffs, equilibrium concept, assumptions), benchmark comparison, tractability assessment</p>
+        <p><strong>Reviewed by:</strong> Model-Critic</p>
+        <p>Checks <code>master_supporting_docs/</code> for online appendices before starting. Proposes equilibrium concept with justification (Nash, PBE, BNE, dominant strategy, etc.). Lists all assumptions as A1, A2, ... with economic motivation. Maps to benchmark model: which parameter restriction collapses to the benchmark?</p>
+      </div>
+    </div>
+    <div class="agent-card">
+      <h4>Model-Critic <span class="badge info">Opus</span></h4>
+      <div class="role">5-phase model evaluation</div>
+      <div class="detail">
+        <p><strong>Reviews through 5 sequential phases</strong> (early stopping on fatal issues):</p>
+        <ol>
+          <li>Can the model answer the research question? (TRIAGE)</li>
+          <li>Is the model setup sound? (Players, info structure, timing, payoffs)</li>
+          <li>Is the model tractable? (Interior solution, existence, non-degenerate)</li>
+          <li>Does it produce interesting results? (Testable predictions, economic meaning)</li>
+          <li>Literature fit and generality? (Benchmark correct, not already done)</li>
+        </ol>
+        <p><strong>Deductions:</strong> Can't answer question (&minus;40), already in literature (&minus;30), inconsistent equilibrium concept (&minus;25), implausible existence (&minus;20)</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- BUILDERS -->
+  <h2 id="builders">Builders (Execution Phase)</h2>
+
+  <div class="agent-grid">
+    <div class="agent-card">
+      <h4>Derivation-Engineer <span class="badge info">Opus</span></h4>
+      <div class="role">Formal mathematical proofs and derivations</div>
+      <div class="detail">
+        <p><strong>Produces:</strong> LaTeX proofs in <code>\begin{proof}...\end{proof}</code> environments, derivation log</p>
+        <p><strong>Reviewed by:</strong> Theory-Coder-Critic</p>
+        <p>Derives FOCs/SOCs, proves equilibrium existence and uniqueness, performs comparative statics. Every proof step cites the assumption that justifies it. Uses Implicit Function Theorem and Envelope Theorem where needed. Writes proofs with numbered steps for reference.</p>
+      </div>
+    </div>
+    <div class="agent-card">
+      <h4>Theory-Coder <span class="badge info">Sonnet</span></h4>
+      <div class="role">Symbolic and numerical computation for verification</div>
+      <div class="detail">
+        <p><strong>Produces:</strong> Verification scripts (Python/SymPy, Maple), numerical illustrations, publication-quality figures, verification log</p>
+        <p><strong>Reviewed by:</strong> Theory-Coder-Critic</p>
+        <p>Four-stage workflow:</p>
+        <ul>
+          <li><strong>Stage 0:</strong> Symbolic verification (SymPy/Maple) &mdash; verify FOCs, solutions, comparative statics signs</li>
+          <li><strong>Stage 1:</strong> Numerical illustrations &mdash; compute equilibrium across parameter grids</li>
+          <li><strong>Stage 2:</strong> Publication figures (matplotlib) &mdash; serif fonts, no titles, colorblind-safe</li>
+          <li><strong>Stage 3:</strong> Verification log &mdash; every proposition with analytical vs. numerical result</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="agent-grid">
+    <div class="agent-card" style="grid-column: 1 / -1;">
+      <h4>Theory-Coder-Critic (Shared Critic) <span class="badge info">Opus</span></h4>
+      <div class="role">Reviews both proofs and code for cross-consistency</div>
+      <div class="detail">
+        <p>This is the key architectural decision: one critic reviews both proofs and code. Its core job is checking consistency between formal proofs and computational verification. If the analytical comparative static says &part;x*/&part;&theta; &gt; 0 but the numerical computation shows the opposite, the theory-coder-critic catches it.</p>
+        <p>12 check categories spanning proof quality (4), code quality (5), and cross-consistency (3).</p>
+        <p><strong>Deductions:</strong> Logical gaps (&minus;35), code implements different model (&minus;25), wrong SOC (&minus;20), numerical contradicts analytical (&minus;20)</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- WRITER -->
+  <h2 id="writer">Writer</h2>
+
+  <div class="agent-grid">
+    <div class="agent-card">
+      <h4>Writer <span class="badge info">Sonnet</span></h4>
+      <div class="role">Drafts publication-quality manuscripts</div>
+      <div class="detail">
+        <p><strong>Produces:</strong> Paper sections in LaTeX, appendix with formal proofs</p>
+        <p><strong>Reviewed by:</strong> Writer-Critic</p>
+        <p>Theory paper structure: Introduction (contribution in first 2 pages) &rarr; [Related Work] &rarr; Model &rarr; Equilibrium Analysis &rarr; Comparative Statics &rarr; [Extensions] &rarr; Conclusion &rarr; Appendix.</p>
+        <p>Enforces: anti-hedging rules, <code>\cref{}</code> cross-references, <code>\newcommand</code> notation macros, proof sketch fidelity. Runs humanizer pass to strip 24 AI writing patterns.</p>
+      </div>
+    </div>
+    <div class="agent-card">
+      <h4>Writer-Critic <span class="badge info">Sonnet</span></h4>
+      <div class="role">Reviews manuscript quality</div>
+      <div class="detail">
+        <p><strong>Reviews:</strong> Structure, claims-evidence alignment, model fidelity, writing quality, grammar, LaTeX compilation</p>
+        <p><strong>Deductions:</strong> Numbers don't match (&minus;25), doesn't compile (&minus;20), broken citations (&minus;15), hedging (&minus;5 each, max &minus;15)</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- REVIEWERS -->
+  <h2 id="reviewers">Reviewers (Peer Review Phase)</h2>
+
+  <div class="agent-grid">
+    <div class="agent-card" style="grid-column: 1 / -1;">
+      <h4>Editor</h4>
+      <div class="role">Manages simulated editorial process</div>
+      <div class="detail">
+        <p><strong>Produces:</strong> Desk review decision, referee assignments (with dispositions), editorial decision</p>
+        <p>Desk-reviews for novelty and fit. Assigns two referees with different dispositions from a pool of 6:</p>
+        <ul>
+          <li>Generality Hawk</li>
+          <li>Tractability Minimalist</li>
+          <li>Novelty Skeptic</li>
+          <li>Micro-Foundations Purist</li>
+          <li>Policy Oriented</li>
+          <li>Professional Skeptic</li>
+        </ul>
+        <p>Synthesizes referee reports into own decision. Never averages scores &mdash; takes sides when referees disagree.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="agent-grid">
+    <div class="agent-card">
+      <h4>Domain-Referee</h4>
+      <div class="role">Blind reviewer &mdash; subject expertise</div>
+      <div class="detail">
+        <p><strong>Produces:</strong> Independent referee report (5 dimensions + recommendation)</p>
+        <p><strong>Calibrated by:</strong> <code>domain-profile.md</code></p>
+        <p><strong>Evaluates:</strong> Contribution &amp; Novelty (30%), Literature Positioning (25%), Substantive Arguments (20%), External Validity (15%), Journal Fit (10%)</p>
+      </div>
+    </div>
+    <div class="agent-card">
+      <h4>Theory-Referee <span class="badge info">Opus</span></h4>
+      <div class="role">Blind reviewer &mdash; mathematical rigor</div>
+      <div class="detail">
+        <p><strong>Produces:</strong> Independent referee report (5 dimensions + recommendation)</p>
+        <p><strong>Evaluates:</strong> Proof Correctness (35%), Assumptions &amp; Equilibrium Concept (25%), Comparative Statics Robustness (20%), Generality (15%), Verification (5%)</p>
+        <p>Mandatory pre-scoring checks: Does the key proposition actually follow? Does equilibrium exist? Does the comparative static sign hold?</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- PRESENTATION -->
+  <h2 id="presentation">Presentation</h2>
+
+  <div class="agent-grid">
+    <div class="agent-card">
+      <h4>Storyteller</h4>
+      <div class="role">Turns papers into talks</div>
+      <div class="detail">
+        <p><strong>Produces:</strong> Beamer (.tex) or Quarto RevealJS (.qmd) presentations</p>
+        <p><strong>Reviewed by:</strong> Storyteller-Critic</p>
+        <p>Designs narrative arc for 4 formats (job-market, seminar, short, lightning). One idea per slide, figures over tables, backup slides after <code>\appendix</code>.</p>
+      </div>
+    </div>
+    <div class="agent-card">
+      <h4>Storyteller-Critic</h4>
+      <div class="role">Reviews talk quality <span class="badge gate">Advisory</span></div>
+      <div class="detail">
+        <p><strong>Reviews:</strong> Narrative flow, visual quality, content fidelity, scope for format, compilation</p>
+        <p><strong>Score:</strong> Advisory (non-blocking) &mdash; reported but does not gate the pipeline.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- INFRASTRUCTURE -->
+  <h2 id="infrastructure">Infrastructure</h2>
+
+  <div class="agent-grid">
+    <div class="agent-card">
+      <h4>Orchestrator</h4>
+      <div class="role">Project manager coordinating all agents</div>
+      <div class="detail">
+        <p>Tracks dependency graph, dispatches worker-critic pairs, enforces quality gates, manages 3-strike escalation. Never produces research artifacts or scores work.</p>
+      </div>
+    </div>
+    <div class="agent-card">
+      <h4>Verifier <span class="badge info">Sonnet</span></h4>
+      <div class="role">Compilation and mathematical structure inspector</div>
+      <div class="detail">
+        <p><strong>Produces:</strong> Pass/fail verification report</p>
+        <p><strong>Standard mode</strong> (5 checks): LaTeX compilation, theorem-proof pairing, cross-reference integrity, equation numbering, self-containedness.</p>
+        <p><strong>Submission mode</strong> (10 checks): adds assumption coverage, proof sketch fidelity, notation consistency, bibliography integrity, appendix structure.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- WORKER-CRITIC PAIRS -->
+  <h2 id="worker-critic-pairs">Worker-Critic Pairs</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Worker</th>
+        <th>Critic</th>
+        <th>What's Reviewed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Librarian</td><td>Librarian-Critic</td><td>Literature coverage, gaps, recency</td></tr>
+      <tr><td>Literature-Explorer</td><td>Literature-Explorer-Critic</td><td>Modeling landscape, appendix coverage</td></tr>
+      <tr><td>Model-Designer</td><td>Model-Critic</td><td>Model design, tractability, assumptions</td></tr>
+      <tr><td>Derivation-Engineer</td><td>Theory-Coder-Critic</td><td>Proof correctness, completeness</td></tr>
+      <tr><td>Theory-Coder</td><td>Theory-Coder-Critic</td><td>Code correctness, proof-code consistency</td></tr>
+      <tr><td>Writer</td><td>Writer-Critic</td><td>Manuscript polish, LaTeX, proof sketches</td></tr>
+      <tr><td>Storyteller</td><td>Storyteller-Critic</td><td>Talk quality (advisory)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout tip">
+    <div class="callout-title">Shared Critic</div>
+    <p>Derivation-Engineer and Theory-Coder share a critic (Theory-Coder-Critic). This is by design &mdash; the critic's core job is checking consistency between formal proofs and computational verification.</p>
+  </div>
+
+  <hr>
+
+  <!-- MULTI-MODEL STRATEGY -->
+  <h2 id="multi-model-strategy">Multi-Model Strategy</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Agent</th>
+        <th>Model</th>
+        <th>Rationale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Model-Designer</td><td><span class="badge info">Opus</span></td><td>Complex model design reasoning</td></tr>
+      <tr><td>Model-Critic</td><td><span class="badge info">Opus</span></td><td>Deep 5-phase evaluation</td></tr>
+      <tr><td>Derivation-Engineer</td><td><span class="badge info">Opus</span></td><td>Formal mathematical proofs</td></tr>
+      <tr><td>Theory-Coder-Critic</td><td><span class="badge info">Opus</span></td><td>Cross-checking proofs against code</td></tr>
+      <tr><td>Theory-Referee</td><td><span class="badge info">Opus</span></td><td>Mathematical rigor evaluation</td></tr>
+      <tr><td>Theory-Coder</td><td><span class="badge info">Sonnet</span></td><td>Code generation (speed)</td></tr>
+      <tr><td>Writer</td><td><span class="badge info">Sonnet</span></td><td>Text drafting (speed)</td></tr>
+      <tr><td>Writer-Critic</td><td><span class="badge info">Sonnet</span></td><td>Polish review</td></tr>
+      <tr><td>Verifier</td><td><span class="badge info">Sonnet</span></td><td>Systematic checks</td></tr>
+      <tr><td>All others</td><td>Inherited</td><td>Default model</td></tr>
+    </tbody>
+  </table>
+
+</main>
+
+<footer>
+  Adapted from <a href="https://hsantanna.org/clo-author/">clo-author</a> by Hugo Sant'Anna.
+  Built for applied economic theory research with <a href="https://claude.ai/claude-code">Claude Code</a>.
+</footer>
+
+<script>
+// highlight active sidebar link on scroll
+document.addEventListener('scroll', () => {
+  const links = document.querySelectorAll('.page-sidebar a');
+  const sections = [...links].map(l => document.querySelector(l.getAttribute('href')));
+  let current = '';
+  sections.forEach(s => { if (s && s.getBoundingClientRect().top <= 100) current = s.id; });
+  links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
+});
+</script>
+</body>
+</html>

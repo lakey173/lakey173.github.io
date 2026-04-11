@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Customization Guide — Clo-Author Theory</title>
+  <meta name="description" content="Tailor clo-author-theory to your research: domain profiles, agent scoring, journal targets, hooks, and memory.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="index.html" class="brand">Clo-Author Theory</a>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+  <ul class="nav-links">
+    <li><a href="index.html">Quick Start</a></li>
+    <li><a href="user-guide.html">User Guide</a></li>
+    <li><a href="agents.html">Agents</a></li>
+    <li><a href="architecture.html">Architecture</a></li>
+    <li><a href="customization.html" class="active">Customization</a></li>
+    <li><a href="reference.html">Reference</a></li>
+    <li><a href="changelog.html">About</a></li>
+  </ul>
+  <a href="https://github.com/lakey173/clo-author-theory" class="github-link">
+    <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+    GitHub
+  </a>
+</nav>
+
+<!-- RIGHT SIDEBAR -->
+<aside class="page-sidebar">
+  <h4>On this page</h4>
+  <ul>
+    <li><a href="#config-layers">The 6 Configuration Layers</a></li>
+    <li><a href="#claude-md">1. CLAUDE.md</a></li>
+    <li><a href="#rules">2. Rules</a></li>
+    <li><a href="#agents">3. Agents</a></li>
+    <li><a href="#skills">4. Skills</a></li>
+    <li><a href="#references">5. References</a></li>
+    <li><a href="#hooks">6. Hooks</a></li>
+    <li><a href="#domain-profile-deep-dive">Domain Profile Deep Dive</a></li>
+    <li><a href="#referee-pool">Customizing the Referee Pool</a></li>
+    <li><a href="#memory-system">Memory System</a></li>
+    <li><a href="#adding-agent">Adding a New Agent</a></li>
+    <li><a href="#adding-skill">Adding a New Skill</a></li>
+  </ul>
+</aside>
+
+<main>
+
+  <h1>Customization Guide</h1>
+  <p class="subtitle">Tailor clo-author-theory to your research</p>
+
+  <!-- THE 6 CONFIGURATION LAYERS -->
+  <h2 id="config-layers">The 6 Configuration Layers</h2>
+
+  <p>From broadest to most specific:</p>
+
+  <!-- LAYER 1 -->
+  <h3 id="claude-md">1. CLAUDE.md (Project Constitution)</h3>
+
+  <p>
+    The root <code>CLAUDE.md</code> file (~120 lines) is the project constitution. It defines:
+  </p>
+  <ul>
+    <li>Project name, institution, field</li>
+    <li>Folder structure</li>
+    <li>Compilation commands</li>
+    <li>Quality thresholds</li>
+    <li>Skills quick reference</li>
+    <li>Beamer custom environments</li>
+    <li>Current project state tracker</li>
+  </ul>
+
+  <p>Fill in the <code>[BRACKETED PLACEHOLDERS]</code> when you first fork:</p>
+
+  <pre><code>Project: [YOUR PROJECT NAME]
+Institution: [YOUR INSTITUTION]
+Field: [YOUR FIELD &mdash; e.g., Industrial Organization, Contract Theory]</code></pre>
+
+  <!-- LAYER 2 -->
+  <h3 id="rules">2. Rules (7 files)</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Rule</th>
+        <th>Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>workflow.md</code></td><td>Plan-first protocol, orchestrator loop, dependency graph</td></tr>
+      <tr><td><code>quality.md</code></td><td>Scoring weights, thresholds, severity gradient</td></tr>
+      <tr><td><code>agents.md</code></td><td>Worker-critic pairs, separation of powers, 3-strike escalation</td></tr>
+      <tr><td><code>logging.md</code></td><td>Session reports and research journal format</td></tr>
+      <tr><td><code>revision.md</code></td><td>R&amp;R cycle: comment classification and routing</td></tr>
+      <tr><td><code>content-standards.md</code></td><td>Proof format, table/figure standards, exploration protocol</td></tr>
+      <tr><td><code>working-paper-format.md</code></td><td>LaTeX preamble, theorem environments, bibliography setup</td></tr>
+    </tbody>
+  </table>
+
+  <!-- LAYER 3 -->
+  <h3 id="agents">3. Agents (18 definitions)</h3>
+
+  <p>
+    Each <code>.claude/agents/*.md</code> file defines one agent:
+  </p>
+  <ul>
+    <li>Role and responsibilities</li>
+    <li>Tools available (Read, Write, Edit, Bash, Grep, Glob, WebSearch, WebFetch)</li>
+    <li>Model assignment (Opus for complex reasoning, Sonnet for speed)</li>
+    <li>Scoring rubric (for critics)</li>
+    <li>Escalation target</li>
+  </ul>
+
+  <p>You can customize:</p>
+  <ul>
+    <li><strong>Scoring rubrics</strong> &mdash; adjust deduction points for your field's priorities</li>
+    <li><strong>Model assignments</strong> &mdash; change which agents use Opus vs. Sonnet</li>
+    <li><strong>Escalation routing</strong> &mdash; change who handles 3-strike failures</li>
+  </ul>
+
+  <!-- LAYER 4 -->
+  <h3 id="skills">4. Skills (11 commands)</h3>
+
+  <p>
+    Each <code>.claude/skills/*/SKILL.md</code> defines a slash command. Skills dispatch agents and
+    enforce workflows. You generally don't need to modify these unless adding new commands.
+  </p>
+
+  <!-- LAYER 5 -->
+  <h3 id="references">5. References (Domain Profile + Journal Profiles)</h3>
+
+  <h4>Domain Profile (<code>domain-profile.md</code>)</h4>
+
+  <p>The domain profile calibrates all agents to your field. Key sections:</p>
+  <ul>
+    <li><strong>Field:</strong> e.g., "Industrial Organization &mdash; Applied Theory"</li>
+    <li><strong>Modeling approaches:</strong> What techniques your field uses (signaling, screening, mechanism design, etc.)</li>
+    <li><strong>Solution concepts:</strong> PBE, Nash, dominant strategy, etc.</li>
+    <li><strong>Notation conventions:</strong> What symbols are standard in your subfield</li>
+    <li><strong>Seminal references:</strong> The 5&ndash;10 papers every paper in your area must cite</li>
+    <li><strong>Quality tolerance thresholds:</strong> Numerical precision for computation</li>
+  </ul>
+
+  <p>Run <code>/discover interview [topic]</code> to auto-populate, or fill manually.</p>
+
+  <h4>Journal Profiles (<code>journal-profiles.md</code>)</h4>
+
+  <p>18 theory journal profiles pre-configured:</p>
+  <ul>
+    <li><strong>Top 5 generals (theory track):</strong> Econometrica, AER, QJE, JPE, REStud</li>
+    <li><strong>Theory-specific:</strong> Theoretical Economics, JET, GEB, RAND, AEJ:Micro</li>
+    <li><strong>Field journals:</strong> JEEA, Management Science (theory), J. Finance (theory), J. Int'l Econ, J. Public Econ, J. Labor Econ, European Econ Rev, Canadian J. Econ</li>
+  </ul>
+
+  <p>
+    Each profile includes: scope, acceptance rate, theory bar, page limits, referee dispositions,
+    and what they look for.
+  </p>
+  <p>Add your own journal profiles following the existing format.</p>
+
+  <!-- LAYER 6 -->
+  <h3 id="hooks">6. Hooks (4 hooks)</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Hook</th>
+        <th>Trigger</th>
+        <th>Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>protect-files.sh</code></td><td>Before Edit/Write</td><td>Prevents accidental modification of critical files (.claude/rules, settings.json)</td></tr>
+      <tr><td><code>pre-compact.py</code></td><td>Before context compression</td><td>Saves session state (MEMORY.md, plans, logs) before compression</td></tr>
+      <tr><td><code>post-compact-restore.py</code></td><td>After compression/resume</td><td>Restores context from saved state</td></tr>
+      <tr><td><code>post-merge.sh</code></td><td>After git merge</td><td>Detects upstream changes to infrastructure</td></tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <!-- DOMAIN PROFILE DEEP DIVE -->
+  <h2 id="domain-profile-deep-dive">Domain Profile Deep Dive</h2>
+
+  <p>
+    The domain profile is the most important customization. It tells every agent what field you're in
+    and how that field works.
+  </p>
+
+  <p>Example for Industrial Organization:</p>
+
+  <pre><code>## Field
+Industrial Organization &mdash; Applied Theory
+
+## Modeling Approaches
+- Cournot/Bertrand competition
+- Vertical differentiation
+- Entry deterrence
+- Mechanism design for auctions
+- Information design
+
+## Solution Concepts
+- Nash Equilibrium (simultaneous games)
+- Subgame Perfect Equilibrium (sequential games)
+- Perfect Bayesian Equilibrium (signaling/screening)
+- Bayesian Nash Equilibrium (incomplete information)
+
+## Notation Conventions
+- Firms indexed by i &isin; {1, ..., n}
+- Quantities: q_i, Prices: p_i
+- Costs: c_i or C(q_i)
+- Consumer surplus: CS, Producer surplus: PS
+- Welfare: W = CS + PS
+
+## Seminal References
+- Tirole (1988) &mdash; The Theory of Industrial Organization
+- Fudenberg and Tirole (1991) &mdash; Game Theory
+- Mas-Colell, Whinston, Green (1995) &mdash; Microeconomic Theory</code></pre>
+
+  <hr>
+
+  <!-- REFEREE POOL -->
+  <h2 id="referee-pool">Customizing the Editor's Referee Pool</h2>
+
+  <p>The Editor assigns referees with dispositions. You can customize:</p>
+
+  <p><strong>6 Dispositions:</strong></p>
+  <ol>
+    <li>Generality Hawk &mdash; wants results to hold beyond specific functional forms</li>
+    <li>Tractability Minimalist &mdash; wants simpler models</li>
+    <li>Novelty Skeptic &mdash; skeptical that results are genuinely new</li>
+    <li>Micro-Foundations Purist &mdash; wants every assumption micro-founded</li>
+    <li>Policy Oriented &mdash; wants policy implications</li>
+    <li>Professional Skeptic &mdash; challenges everything</li>
+  </ol>
+
+  <p><strong>Pet Peeves (18 critical + 18 constructive):</strong></p>
+  <p>Add field-specific pet peeves to the editor agent definition. Examples:</p>
+  <ul>
+    <li>Critical: "Claims general result but only proves for linear demand"</li>
+    <li>Constructive: "Suggests extending to asymmetric firms"</li>
+  </ul>
+
+  <hr>
+
+  <!-- MEMORY SYSTEM -->
+  <h2 id="memory-system">Memory System</h2>
+
+  <p>4 persistent layers:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Layer</th>
+        <th>Location</th>
+        <th>Survives</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Auto-memory</td><td><code>~/.claude/projects/[project]/memory/MEMORY.md</code></td><td>All sessions</td></tr>
+      <tr><td>Session logs</td><td><code>quality_reports/session_logs/</code></td><td>Context compression</td></tr>
+      <tr><td>Plans on disk</td><td><code>quality_reports/plans/</code></td><td>Context compression</td></tr>
+      <tr><td>Research journal</td><td><code>quality_reports/research_journal.md</code></td><td>All sessions</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>What gets saved automatically:</strong></p>
+  <ul>
+    <li>Corrections you make (MEMORY.md)</li>
+    <li>Workflow preferences</li>
+    <li>Architecture decisions</li>
+    <li>Solutions to recurring problems</li>
+  </ul>
+
+  <p>
+    <strong>Context survival:</strong> Before compression, the pre-compact hook reminds Claude to save
+    important state. After compression, Claude reads MEMORY.md + latest plan + git log to resume.
+  </p>
+
+  <hr>
+
+  <!-- ADDING A NEW AGENT -->
+  <h2 id="adding-agent">Adding a New Agent</h2>
+
+  <div class="steps">
+    <div class="step">
+      <h3>Create the agent definition</h3>
+      <p>
+        Create <code>.claude/agents/your-agent.md</code> with: description of role, available tools,
+        model assignment (optional), responsibilities, and scoring rubric (if critic).
+      </p>
+    </div>
+    <div class="step">
+      <h3>Register the pairing</h3>
+      <p>
+        Update <code>.claude/rules/agents.md</code> with the worker-critic pairing.
+      </p>
+    </div>
+    <div class="step">
+      <h3>Wire into a skill</h3>
+      <p>
+        Update the relevant skill to dispatch the new agent.
+      </p>
+    </div>
+    <div class="step">
+      <h3>Update quality scoring</h3>
+      <p>
+        Update <code>quality.md</code> if the agent contributes to the aggregate score.
+      </p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- ADDING A NEW SKILL -->
+  <h2 id="adding-skill">Adding a New Skill</h2>
+
+  <div class="steps">
+    <div class="step">
+      <h3>Create the skill definition</h3>
+      <p>
+        Create <code>.claude/skills/your-skill/SKILL.md</code> with: command syntax, description,
+        arguments and modes, workflow steps, agents to dispatch, and output locations.
+      </p>
+    </div>
+    <div class="step">
+      <h3>Register in CLAUDE.md</h3>
+      <p>
+        Add the new command to the skills reference table in <code>CLAUDE.md</code>.
+      </p>
+    </div>
+    <div class="step">
+      <h3>Add to quick reference</h3>
+      <p>
+        Add the command to <code>WORKFLOW_QUICK_REF.md</code>.
+      </p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Adapted from <a href="https://hsantanna.org/clo-author/">clo-author</a> by Hugo Sant'Anna.
+  Built for applied economic theory research with <a href="https://claude.ai/claude-code">Claude Code</a>.
+</footer>
+
+<script>
+// highlight active sidebar link on scroll
+document.addEventListener('scroll', () => {
+  const links = document.querySelectorAll('.page-sidebar a');
+  const sections = [...links].map(l => document.querySelector(l.getAttribute('href')));
+  let current = '';
+  sections.forEach(s => { if (s && s.getBoundingClientRect().top <= 100) current = s.id; });
+  links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
+});
+</script>
+</body>
+</html>

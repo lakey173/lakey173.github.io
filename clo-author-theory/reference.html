@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Command Reference — Clo-Author Theory</title>
+  <meta name="description" content="Complete reference for all 11 commands in clo-author-theory — from /new-project to /tools.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="index.html" class="brand">Clo-Author Theory</a>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+  <ul class="nav-links">
+    <li><a href="index.html">Quick Start</a></li>
+    <li><a href="user-guide.html">User Guide</a></li>
+    <li><a href="agents.html">Agents</a></li>
+    <li><a href="architecture.html">Architecture</a></li>
+    <li><a href="customization.html">Customization</a></li>
+    <li><a href="reference.html" class="active">Reference</a></li>
+    <li><a href="changelog.html">About</a></li>
+  </ul>
+  <a href="https://github.com/lakey173/clo-author-theory" class="github-link">
+    <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+    GitHub
+  </a>
+</nav>
+
+<!-- RIGHT SIDEBAR -->
+<aside class="page-sidebar">
+  <h4>On this page</h4>
+  <ul>
+    <li><a href="#new-project">/new-project</a></li>
+    <li><a href="#discover">/discover</a></li>
+    <li><a href="#model">/model</a></li>
+    <li><a href="#sanity">/sanity</a></li>
+    <li><a href="#solve">/solve</a></li>
+    <li><a href="#write">/write</a></li>
+    <li><a href="#review">/review</a></li>
+    <li><a href="#revise">/revise</a></li>
+    <li><a href="#talk">/talk</a></li>
+    <li><a href="#submit">/submit</a></li>
+    <li><a href="#tools">/tools</a></li>
+  </ul>
+</aside>
+
+<main>
+
+  <h1>Command Reference</h1>
+  <p class="subtitle">Complete reference for all 11 commands</p>
+
+  <hr>
+
+  <!-- /new-project -->
+  <h2 id="new-project">/new-project</h2>
+
+  <p><strong>Full theory research pipeline from idea to paper.</strong></p>
+
+  <pre><code>/new-project [research topic or 'interactive']</code></pre>
+
+  <table>
+    <tbody>
+      <tr><td><strong>Agents</strong></td><td>All (orchestrated through dependency graph)</td></tr>
+      <tr><td><strong>Output</strong></td><td>Complete pipeline: spec &rarr; literature &rarr; model &rarr; proofs &rarr; paper</td></tr>
+      <tr><td><strong>Blocking</strong></td><td>Yes (dependency gates at each phase)</td></tr>
+    </tbody>
+  </table>
+
+  <p>Phases: Discovery &rarr; Model Design &rarr; Sanity Check &rarr; Execution &rarr; Writing &rarr; Review &rarr; Submission</p>
+
+  <div class="callout">
+    <p>The only command that is always orchestrated. Everything else can run standalone.</p>
+  </div>
+
+  <hr>
+
+  <!-- /discover -->
+  <h2 id="discover">/discover</h2>
+
+  <p><strong>Discovery phase: research interviews, literature search, modeling landscape.</strong></p>
+
+  <pre><code>/discover interview [topic]    # Structured research interview
+/discover lit [topic]          # Literature review
+/discover model [topic]        # Modeling landscape exploration
+/discover ideate [topic]       # Research ideation (3-5 questions)</code></pre>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Mode</th>
+        <th>Agents</th>
+        <th>Output</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>interview</code></td><td>Direct (conversational)</td><td>Research spec + domain profile</td></tr>
+      <tr><td><code>lit</code></td><td>Librarian &rarr; Librarian-Critic</td><td>Annotated bibliography, BibTeX, frontier map</td></tr>
+      <tr><td><code>model</code></td><td>Literature-Explorer &rarr; Lit-Explorer-Critic</td><td>Modeling landscape, proof techniques, benchmark ID</td></tr>
+      <tr><td><code>ideate</code></td><td>Direct</td><td>3&ndash;5 research questions with model sketches</td></tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <!-- /model -->
+  <h2 id="model">/model</h2>
+
+  <p><strong>Design the theoretical model setup.</strong></p>
+
+  <pre><code>/model [research question or spec path]</code></pre>
+
+  <table>
+    <tbody>
+      <tr><td><strong>Agents</strong></td><td>Model-Designer &rarr; Model-Critic</td></tr>
+      <tr><td><strong>Output</strong></td><td>Model memo, benchmark comparison, tractability assessment</td></tr>
+      <tr><td><strong>Output location</strong></td><td><code>quality_reports/model/[project]/</code></td></tr>
+      <tr><td><strong>Blocking</strong></td><td>Yes (score &ge; 80 required)</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>Model memo contents:</strong> players, timing, payoffs, equilibrium concept, assumptions (A1, A2, ...), benchmark model mapping, tractability plan, expected results.</p>
+
+  <p><strong>Model-Critic 5-phase review:</strong></p>
+  <ol>
+    <li>Can answer question?</li>
+    <li>Sound setup?</li>
+    <li>Tractable?</li>
+    <li>Interesting results?</li>
+    <li>Literature fit?</li>
+  </ol>
+
+  <hr>
+
+  <!-- /sanity -->
+  <h2 id="sanity">/sanity</h2>
+
+  <p><strong>Validate model before derivations. Required gate.</strong></p>
+
+  <pre><code>/sanity [model memo path or topic]</code></pre>
+
+  <table>
+    <tbody>
+      <tr><td><strong>Agents</strong></td><td>Model-Designer + Model-Critic (sanity mode)</td></tr>
+      <tr><td><strong>Output</strong></td><td>Sanity report with PASS/FAIL</td></tr>
+      <tr><td><strong>Output location</strong></td><td><code>quality_reports/model/[project]/sanity_report.md</code></td></tr>
+      <tr><td><strong>Blocking</strong></td><td>Yes <span class="badge gate">HARD GATE</span> &mdash; must PASS before /solve</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>7 critical checks:</strong></p>
+  <ol>
+    <li>Interior solution exists</li>
+    <li>Non-degenerate equilibrium</li>
+    <li>Non-knife-edge parameters</li>
+    <li>Well-defined comparative statics</li>
+    <li>Concavity/convexity verified</li>
+    <li>Equilibrium existence plausible</li>
+    <li>Non-trivial solution</li>
+  </ol>
+
+  <p>Plus advisory: testable predictions exist.</p>
+
+  <hr>
+
+  <!-- /solve -->
+  <h2 id="solve">/solve</h2>
+
+  <p><strong>Solve the model: proofs, computation, verification.</strong></p>
+
+  <pre><code>/solve [model memo path or topic]
+/solve --symbolic-only          # Proofs only (closed-form known)
+/solve --numeric-only           # Computation only (no closed form)</code></pre>
+
+  <table>
+    <tbody>
+      <tr><td><strong>Prerequisites</strong></td><td>Model memo approved (&ge; 80) + Sanity PASS</td></tr>
+      <tr><td><strong>Agents</strong></td><td>Derivation-Engineer &parallel; Theory-Coder + Theory-Coder-Critic</td></tr>
+      <tr><td><strong>Output</strong></td><td>Appendix proofs, verification scripts, figures, verification log</td></tr>
+      <tr><td><strong>Output locations</strong></td><td><code>paper/sections/appendix_proofs.tex</code>, <code>scripts/python/[project]/</code>, <code>paper/figures/</code>, <code>quality_reports/verification/[project]/</code></td></tr>
+      <tr><td><strong>Blocking</strong></td><td>Yes (score &ge; 80)</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>Required derivations:</strong> FOCs, equilibrium existence, characterization, comparative statics, welfare (if applicable).</p>
+
+  <hr>
+
+  <!-- /write -->
+  <h2 id="write">/write</h2>
+
+  <p><strong>Draft paper sections with theory conventions.</strong></p>
+
+  <pre><code>/write intro [file]            # Introduction (contribution in first 2 pages)
+/write model [file]            # Model section
+/write equilibrium [file]      # Equilibrium analysis
+/write results [file]          # Comparative statics / main results
+/write conclusion [file]       # Conclusion
+/write appendix [file]         # Appendix proofs
+/write full [file]             # Complete paper
+/write humanize [file]         # Strip AI writing patterns only</code></pre>
+
+  <table>
+    <tbody>
+      <tr><td><strong>Agents</strong></td><td>Writer &rarr; Writer-Critic</td></tr>
+      <tr><td><strong>Output</strong></td><td>LaTeX section files</td></tr>
+      <tr><td><strong>Output location</strong></td><td><code>paper/sections/</code> or <code>paper/main.tex</code></td></tr>
+      <tr><td><strong>Blocking</strong></td><td>Yes (depends on proofs being complete)</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>Enforced conventions:</strong> <code>\cref{}</code> cross-references, numbered assumptions, proof sketch fidelity, anti-hedging, humanizer pass.</p>
+
+  <hr>
+
+  <!-- /review -->
+  <h2 id="review">/review</h2>
+
+  <p><strong>Quality reviews &mdash; routes to critics by file type and flags.</strong></p>
+
+  <pre><code>/review paper/main.tex                    # Comprehensive review
+/review --peer [journal]                  # Full peer review
+/review --peer --r2 [journal]             # R&amp;R second round
+/review --stress [journal]                # Hostile stress test
+/review --proofs paper/sections/appendix_proofs.tex  # Proof review
+/review --code scripts/python/verify.py   # Code review
+/review --proofread                       # Manuscript polish
+/review --all                             # All critics in parallel</code></pre>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Flag</th>
+        <th>Agents Dispatched</th>
+        <th>Score Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>(none, .tex)</td><td>Writer-Critic + Theory-Coder-Critic + Verifier</td><td>Blocking (&ge; 80)</td></tr>
+      <tr><td><code>--peer</code></td><td>Editor &rarr; Domain-Referee + Theory-Referee &rarr; Editorial decision</td><td>Blocking (editorial)</td></tr>
+      <tr><td><code>--stress</code></td><td>Both referees skeptic + 2 critical pet peeves</td><td>Blocking</td></tr>
+      <tr><td><code>--proofs</code></td><td>Theory-Coder-Critic (proof categories)</td><td>Blocking (&ge; 80)</td></tr>
+      <tr><td><code>--code</code></td><td>Theory-Coder-Critic (code categories)</td><td>Blocking (&ge; 80)</td></tr>
+      <tr><td><code>--proofread</code></td><td>Writer-Critic (6 categories)</td><td>Blocking (&ge; 80)</td></tr>
+      <tr><td><code>--all</code></td><td>All critics parallel</td><td>Blocking (&ge; 80)</td></tr>
+      <tr><td>(talk .tex)</td><td>Storyteller-Critic</td><td>Advisory</td></tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <!-- /revise -->
+  <h2 id="revise">/revise</h2>
+
+  <p><strong>R&amp;R cycle: classify referee comments and route.</strong></p>
+
+  <pre><code>/revise [referee-report path] [paper path]</code></pre>
+
+  <table>
+    <tbody>
+      <tr><td><strong>Agents</strong></td><td>Writer, Theory-Coder (as needed)</td></tr>
+      <tr><td><strong>Output</strong></td><td>Response letter, revision tracker, revised sections</td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>Comment classifications:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Classification</th>
+        <th>Routed To</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>NEW ANALYSIS</td><td>Coder</td></tr>
+      <tr><td>CLARIFICATION</td><td>Writer</td></tr>
+      <tr><td>DISAGREE</td><td>User</td></tr>
+      <tr><td>MINOR</td><td>Writer</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout tip">
+    <div class="callout-title">Human in the loop</div>
+    <p>DISAGREE items are always flagged for human review. The system never autonomously pushes back on referees.</p>
+  </div>
+
+  <hr>
+
+  <!-- /talk -->
+  <h2 id="talk">/talk</h2>
+
+  <p><strong>Create and manage presentations.</strong></p>
+
+  <pre><code>/talk create [format]          # Create talk (job-market|seminar|short|lightning)
+/talk create [format] --quarto # Quarto RevealJS instead of Beamer
+/talk audit [file]             # Visual audit
+/talk compile [file]           # Compile (XeLaTeX or quarto render)</code></pre>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Format</th>
+        <th>Slides</th>
+        <th>Duration</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>job-market</td><td>40&ndash;50</td><td>45&ndash;60 min</td></tr>
+      <tr><td>seminar</td><td>25&ndash;35</td><td>30&ndash;45 min</td></tr>
+      <tr><td>short</td><td>10&ndash;15</td><td>15 min</td></tr>
+      <tr><td>lightning</td><td>3&ndash;5</td><td>5 min</td></tr>
+    </tbody>
+  </table>
+
+  <table>
+    <tbody>
+      <tr><td><strong>Agents</strong></td><td>Storyteller &rarr; Storyteller-Critic</td></tr>
+      <tr><td><strong>Output</strong></td><td><code>paper/talks/[format]_talk.tex</code> or <code>paper/quarto/[format]_talk.qmd</code></td></tr>
+      <tr><td><strong>Score</strong></td><td>Advisory (non-blocking)</td></tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <!-- /submit -->
+  <h2 id="submit">/submit</h2>
+
+  <p><strong>Submission pipeline.</strong></p>
+
+  <pre><code>/submit target                 # Journal recommendations
+/submit package                # Build replication package
+/submit audit                  # Audit replication package
+/submit final [journal]        # Final gate (&ge; 95 + all &ge; 80)</code></pre>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Mode</th>
+        <th>Output</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>target</code></td><td>Journal recommendations with rationale</td></tr>
+      <tr><td><code>package</code></td><td>Replication package in <code>paper/replication/</code></td></tr>
+      <tr><td><code>audit</code></td><td>10-point verification report</td></tr>
+      <tr><td><code>final</code></td><td>Cover letter, submission checklist (if score passes)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <p><strong>Final gate:</strong> Aggregate score &ge; 95, every component &ge; 80. No exceptions.</p>
+  </div>
+
+  <hr>
+
+  <!-- /tools -->
+  <h2 id="tools">/tools</h2>
+
+  <p><strong>Utility commands.</strong></p>
+
+  <pre><code>/tools commit [message]        # Git commit (notes score if &ge; 80)
+/tools compile [file]          # 3-pass XeLaTeX + biber
+/tools validate-bib            # Cross-reference citations vs. .bib
+/tools journal                 # Regenerate research journal
+/tools context                 # Show context usage
+/tools deploy                  # Render and publish guide site
+/tools learn                   # Extract session learnings
+/tools upgrade                 # Upgrade infrastructure (preserves customizations)</code></pre>
+
+</main>
+
+<footer>
+  Adapted from <a href="https://hsantanna.org/clo-author/">clo-author</a> by Hugo Sant'Anna.
+  Built for applied economic theory research with <a href="https://claude.ai/claude-code">Claude Code</a>.
+</footer>
+
+<script>
+// highlight active sidebar link on scroll
+document.addEventListener('scroll', () => {
+  const links = document.querySelectorAll('.page-sidebar a');
+  const sections = [...links].map(l => document.querySelector(l.getAttribute('href')));
+  let current = '';
+  sections.forEach(s => { if (s && s.getBoundingClientRect().top <= 100) current = s.id; });
+  links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
+});
+</script>
+</body>
+</html>

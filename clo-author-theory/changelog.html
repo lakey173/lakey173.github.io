@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About — Clo-Author Theory</title>
+  <meta name="description" content="About clo-author-theory: origin, attribution, what changed from clo-author, architecture overview, and technology stack.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="index.html" class="brand">Clo-Author Theory</a>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+  <ul class="nav-links">
+    <li><a href="index.html">Quick Start</a></li>
+    <li><a href="user-guide.html">User Guide</a></li>
+    <li><a href="agents.html">Agents</a></li>
+    <li><a href="architecture.html">Architecture</a></li>
+    <li><a href="customization.html">Customization</a></li>
+    <li><a href="reference.html">Reference</a></li>
+    <li><a href="changelog.html" class="active">About</a></li>
+  </ul>
+  <a href="https://github.com/lakey173/clo-author-theory" class="github-link">
+    <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+    GitHub
+  </a>
+</nav>
+
+<!-- RIGHT SIDEBAR -->
+<aside class="page-sidebar">
+  <h4>On this page</h4>
+  <ul>
+    <li><a href="#what-is-this">What Is This?</a></li>
+    <li><a href="#origin-and-attribution">Origin and Attribution</a></li>
+    <li><a href="#what-changed">What Changed from clo-author</a></li>
+    <li><a href="#architecture-at-a-glance">Architecture at a Glance</a></li>
+    <li><a href="#technology">Technology</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</aside>
+
+<main>
+
+  <h1>About Clo-Author Theory</h1>
+  <p class="subtitle">An adaptation of clo-author for applied economic theory</p>
+
+  <!-- WHAT IS THIS? -->
+  <h2 id="what-is-this">What Is This?</h2>
+
+  <p>Clo-Author Theory is an open-source Claude Code scaffold that manages the full lifecycle of an applied economic theory research project &mdash; from initial model design through formal proofs, computational verification, paper writing, simulated peer review, and journal submission.</p>
+
+  <p>It is an adaptation of Hugo Sant'Anna's <a href="https://hsantanna.org/clo-author/">clo-author</a>, which was built for empirical economics research. While clo-author handles the empirical pipeline (data &rarr; cleaning &rarr; estimation &rarr; tables &rarr; paper), clo-author-theory handles the theory pipeline (model &rarr; proofs &rarr; comparative statics &rarr; verification &rarr; paper).</p>
+
+  <p>Both projects share the same multi-agent architecture: worker-critic pairs, quality scoring, escalation routing, and the plan-first workflow. The difference is in what the agents do.</p>
+
+  <!-- ORIGIN AND ATTRIBUTION -->
+  <h2 id="origin-and-attribution">Origin and Attribution</h2>
+
+  <p><strong>clo-author-theory</strong> is built by James Lake (University of Tennessee).</p>
+
+  <p><strong>clo-author</strong> is built by Hugo Sant'Anna (University of Georgia). Repository: <a href="https://github.com/hugosantanna/clo-author">github.com/hugosantanna/clo-author</a>. Website: <a href="https://hsantanna.org/clo-author/">hsantanna.org/clo-author</a>.</p>
+
+  <p><strong>claude-code-my-workflow</strong> is built by Pedro Sant'Anna (Emory University), which provided the foundation for clo-author.</p>
+
+  <!-- WHAT CHANGED FROM CLO-AUTHOR -->
+  <h2 id="what-changed">What Changed from clo-author</h2>
+
+  <h3>New Agents (8 replaced)</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>clo-author (Empirical)</th>
+        <th>clo-author-theory (Theory)</th>
+        <th>Key Change</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Strategist</td><td>Model-Designer</td><td>Designs model setup instead of identification strategy</td></tr>
+      <tr><td>Strategist-Critic</td><td>Model-Critic</td><td>5-phase review of model design</td></tr>
+      <tr><td>Data-Engineer</td><td>Derivation-Engineer</td><td>Formal proofs instead of data cleaning</td></tr>
+      <tr><td>Coder</td><td>Theory-Coder</td><td>Symbolic/numerical verification instead of Stata/R estimation</td></tr>
+      <tr><td>Coder-Critic</td><td>Theory-Coder-Critic</td><td>Shared critic for both proofs and code</td></tr>
+      <tr><td>Explorer</td><td>Literature-Explorer</td><td>Searches for modeling approaches, focuses on appendices</td></tr>
+      <tr><td>Explorer-Critic</td><td>Literature-Explorer-Critic</td><td>Reviews modeling landscape coverage</td></tr>
+      <tr><td>Methods-Referee</td><td>Theory-Referee</td><td>Evaluates proofs and assumptions instead of causal inference</td></tr>
+    </tbody>
+  </table>
+
+  <h3>New Skills (3)</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>clo-author</th>
+        <th>clo-author-theory</th>
+        <th>Change</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>/strategize</code></td><td><code>/model</code></td><td>Model design instead of identification strategy</td></tr>
+      <tr><td><code>/analyze</code></td><td><code>/solve</code></td><td>Proofs + computation instead of data analysis</td></tr>
+      <tr><td>(none)</td><td><code>/sanity</code></td><td>New required gate between model and derivations</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Updated Rules (5)</h3>
+
+  <ul>
+    <li><strong>quality.md</strong> &mdash; New weights: Model Setup 25%, Proofs 25% (was Estimation 25%, Data 15%)</li>
+    <li><strong>workflow.md</strong> &mdash; New dependency graph with sanity check gate</li>
+    <li><strong>agents.md</strong> &mdash; New worker-critic pairs including shared critic</li>
+    <li><strong>content-standards.md</strong> &mdash; Proof/theorem standards replace data standards</li>
+    <li><strong>working-paper-format.md</strong> &mdash; <code>amsthm</code> environments, <code>cleveref</code>, 1.5&times; spacing</li>
+  </ul>
+
+  <h3>New References</h3>
+
+  <ul>
+    <li><strong>domain-profile.md</strong> &mdash; Theory-focused: modeling approaches, solution concepts, notation</li>
+    <li><strong>journal-profiles.md</strong> &mdash; 18 theory journal profiles (Econometrica, JET, GEB, Theoretical Economics, etc.)</li>
+  </ul>
+
+  <!-- ARCHITECTURE AT A GLANCE -->
+  <h2 id="architecture-at-a-glance">Architecture at a Glance</h2>
+
+  <ul>
+    <li><strong>18 agents</strong> across 6 phases</li>
+    <li><strong>11 slash commands</strong> for the full pipeline</li>
+    <li><strong>7 rules files</strong> governing workflow, quality, and standards</li>
+    <li><strong>4 hooks</strong> for file protection and context survival</li>
+    <li><strong>Worker-critic pairs</strong> with 3-strike escalation</li>
+    <li><strong>Weighted quality scoring</strong> (6 components, submission requires &ge; 95)</li>
+    <li><strong>Dependency-driven pipeline</strong> (phases activate by inputs, not sequence)</li>
+    <li><strong>Two required gates:</strong> Online Appendix Gate + Sanity Check</li>
+    <li><strong>Multi-model strategy:</strong> Opus for complex reasoning, Sonnet for speed</li>
+  </ul>
+
+  <!-- TECHNOLOGY -->
+  <h2 id="technology">Technology</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Component</th>
+        <th>Technology</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>AI backbone</td><td>Claude Code (CLI or VS Code)</td></tr>
+      <tr><td>Paper compilation</td><td>XeLaTeX + biber (3-pass)</td></tr>
+      <tr><td>Symbolic computation</td><td>SymPy, Maple</td></tr>
+      <tr><td>Numerical computation</td><td>Python/NumPy, R, Julia</td></tr>
+      <tr><td>Figures</td><td>matplotlib (programmatic), Inkscape (schematics)</td></tr>
+      <tr><td>Version control</td><td>Git + GitHub CLI</td></tr>
+      <tr><td>Presentations</td><td>Beamer (XeLaTeX), Quarto RevealJS</td></tr>
+    </tbody>
+  </table>
+
+  <!-- LICENSE -->
+  <h2 id="license">License</h2>
+
+  <p>Open source. Fork, adapt, and use for your research.</p>
+
+  <!-- CONTACT -->
+  <h2 id="contact">Contact</h2>
+
+  <p>James Lake &mdash; Associate Professor of Economics, University of Tennessee</p>
+  <ul>
+    <li>Website: <a href="https://lakey173.github.io">lakey173.github.io</a></li>
+    <li>GitHub: <a href="https://github.com/lakey173">github.com/lakey173</a></li>
+  </ul>
+
+</main>
+
+<footer>
+  Adapted from <a href="https://hsantanna.org/clo-author/">clo-author</a> by Hugo Sant'Anna.
+  Built for applied economic theory research with <a href="https://claude.ai/claude-code">Claude Code</a>.
+</footer>
+
+<script>
+// highlight active sidebar link on scroll
+document.addEventListener('scroll', () => {
+  const links = document.querySelectorAll('.page-sidebar a');
+  const sections = [...links].map(l => document.querySelector(l.getAttribute('href')));
+  let current = '';
+  sections.forEach(s => { if (s && s.getBoundingClientRect().top <= 100) current = s.id; });
+  links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + current));
+});
+</script>
+</body>
+</html>
