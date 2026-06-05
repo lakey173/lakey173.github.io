@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.11)  27 MAR 2026 10:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.11)  5 JUN 2026 11:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -273,24 +273,24 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 44.
 
-Overfull \hbox (4.40685pt too wide) in paragraph at lines 75--92
+Overfull \hbox (4.40685pt too wide) in paragraph at lines 76--93
 \OT1/cmr/m/n/10.95 Local la-bor mar-ket im-pacts of the 2002 Bush steel tar-iffs, with Ding Liu (South-ern Methodist
  []
 
 
-Overfull \hbox (4.31429pt too wide) in paragraph at lines 75--92
+Overfull \hbox (4.31429pt too wide) in paragraph at lines 76--93
 \OT1/cmr/m/n/10.95 The 2020 US Pres-i-den-tial elec-tion and Trump's trade war, with Jun Nie (South-ern Methodist
  []
 
 
-Overfull \hbox (1.42583pt too wide) in paragraph at lines 75--92
+Overfull \hbox (1.42583pt too wide) in paragraph at lines 76--93
 \OT1/cmr/m/n/10.95 Preferential Trade Agree-ments: Re-cent the-o-ret-i-cal and em-pir-i-cal de-vel-op-ments, with Pravin
  []
 
 [1
 
 {c:/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 94--100
+Underfull \hbox (badness 10000) in paragraph at lines 95--102
 
  []
 
@@ -354,9 +354,9 @@ Here is how much of TeX's memory you used:
  37895 multiletter control sequences out of 15000+600000
  632581 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,1532b,492s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,1532b,490s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on CVLakeJW.pdf (7 pages, 104387 bytes).
+Output written on CVLakeJW.pdf (7 pages, 104456 bytes).
 PDF statistics:
  75 PDF objects out of 1000 (max. 8388607)
  53 compressed objects within 1 object stream
