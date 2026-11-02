@@ -1,8 +1,8 @@
-PWD c:/Github/lakey173.github.io/cv
+PWD C:/Github/lakey173.github.io/cv
 INPUT c:/texlive/2026/texmf.cnf
 INPUT c:/texlive/2026/texmf-dist/web2c/texmf.cnf
 INPUT c:/texlive/2026/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT c:/Github/lakey173.github.io/cv/CVLakeJW.tex
+INPUT CVLakeJW.tex
 OUTPUT CVLakeJW.log
 INPUT ./res.cls
 INPUT res.cls
